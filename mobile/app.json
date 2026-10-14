@@ -8,9 +8,11 @@
     "scheme": "aharyamobileapp",
     "userInterfaceStyle": "automatic",
     "ios": {
+      "bundleIdentifier": "com.dashovia.aharya",
       "icon": "./assets/expo.icon"
     },
     "android": {
+      "package": "com.dashovia.aharya",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -32,7 +34,8 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
         }
-      ]
+      ],
+      "expo-sqlite"
     ],
     "experiments": {
       "typedRoutes": true,
