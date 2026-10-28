@@ -1,16 +1,20 @@
 import { router } from 'expo-router';
 import { useState } from 'react';
+import { Alert } from 'react-native';
 
 import { AuthScreen, Field, isEmail, PrimaryButton } from '@/components/auth';
+import { supabase } from '@/lib/supabase';
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState('');
   const [error, setError] = useState<string>();
 
-  function onSubmit() {
+  async function onSubmit() {
     if (!isEmail(email)) return setError('Enter a valid email address');
     setError(undefined);
-    router.push({ pathname: '/verify', params: { email, reset: '1' } });
+    const { error: err } = await supabase.auth.resetPasswordForEmail(email.trim());
+    if (err) return Alert.alert('Could not send the code', err.message);
+    router.push({ pathname: '/verify', params: { email: email.trim(), reset: '1' } });
   }
 
   return (

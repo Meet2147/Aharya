@@ -3,21 +3,33 @@ import { useState } from 'react';
 import { Alert, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { AuthScreen, PrimaryButton, useAuthTheme } from '@/components/auth';
+import { parseProfile, saveProfile, supabase } from '@/lib/supabase';
 
-const LENGTH = 4;
+// Supabase's default email OTP length
+const LENGTH = 6;
 
 export default function Verify() {
   const { c, styles: authStyles } = useAuthTheme();
-  const { email, reset } = useLocalSearchParams<{ email?: string; reset?: string }>();
+  const { email = '', reset, profile } = useLocalSearchParams<{ email?: string; reset?: string; profile?: string }>();
   const [code, setCode] = useState('');
   const [error, setError] = useState<string>();
 
-  function onSubmit() {
+  async function onSubmit() {
     if (code.length !== LENGTH) return setError(`Enter the ${LENGTH}-digit code`);
     setError(undefined);
-    // ponytail: no backend yet, any 4 digits pass; verify the code server-side here
-    if (reset) router.push('/new-password');
-    else router.replace('/home');
+    const { error: err } = await supabase.auth.verifyOtp({ email, token: code, type: reset ? 'recovery' : 'email' });
+    if (err) return setError(err.message);
+    if (reset) return router.push('/new-password');
+    const answers = parseProfile(profile);
+    if (answers) await saveProfile(answers).catch((e) => Alert.alert('Could not save your profile', e.message));
+    router.replace('/home');
+  }
+
+  async function resend() {
+    const { error: err } = reset
+      ? await supabase.auth.resetPasswordForEmail(email)
+      : await supabase.auth.resend({ type: 'signup', email });
+    Alert.alert(err ? 'Could not resend' : 'Code sent', err?.message ?? 'Check your inbox for a new code.');
   }
 
   return (
@@ -55,7 +67,7 @@ export default function Verify() {
         {!!error && <Text style={authStyles.error}>{error}</Text>}
       </View>
       <Pressable
-        onPress={() => Alert.alert('Code sent', 'Check your inbox for a new code.')}
+        onPress={resend}
         accessibilityRole="button"
         style={authStyles.linkHit}>
         <Text style={authStyles.link}>Resend code</Text>

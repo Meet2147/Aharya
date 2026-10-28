@@ -38,6 +38,7 @@ type Step = {
       unit?: string;
       keyboardType?: KeyboardTypeOptions;
       range?: [number, number];
+      pattern?: RegExp;
       maxLength?: number;
     }
   | { kind: 'choice' | 'multi'; options: Option[] }
@@ -141,10 +142,34 @@ const STEPS: Step[] = [
     key: 'allergies',
     kind: 'input',
     optional: true,
-    title: (n) => (n ? `Last one, ${n}.\nAny allergies?` : 'Any food\nallergies?'),
+    title: (n) => (n ? `Any allergies,\n${n}?` : 'Any food\nallergies?'),
     subtitle: "We'll keep these well away from your plate.",
     placeholder: 'e.g. peanuts, lactose',
     maxLength: 120,
+  },
+  {
+    key: 'alcohol',
+    kind: 'choice',
+    title: 'Do you drink\nalcohol?',
+    subtitle: 'It changes how some liver and sugar results are read.',
+    options: plain('Yes', 'No'),
+  },
+  {
+    key: 'smoker',
+    kind: 'choice',
+    title: 'Do you\nsmoke?',
+    subtitle: 'Smoking affects heart and lung markers.',
+    options: plain('Yes', 'No'),
+  },
+  {
+    key: 'phone',
+    kind: 'input',
+    title: (n) => (n ? `Last one, ${n}.\nYour number?` : 'Your mobile\nnumber?'),
+    subtitle: 'A 10-digit Indian number, so your lab reports can be matched to you.',
+    placeholder: '98765 43210',
+    keyboardType: 'phone-pad',
+    pattern: /^(?:\+?91)?[6-9]\d{9}$/,
+    maxLength: 14,
   },
 ];
 
@@ -160,6 +185,7 @@ function validate(step: Step, value: string | string[] | undefined): string | un
     const [min, max] = step.range;
     if (!(n >= min && n <= max)) return `Enter a number between ${min} and ${max}`;
   }
+  if (step.pattern && !step.pattern.test(v.replace(/[\s-]/g, ''))) return 'Enter a valid 10-digit mobile number';
 }
 
 /** The question, then its explanation fading in just after. Remounted per step (keyed). */
@@ -232,9 +258,7 @@ export default function Onboarding() {
   async function finish(profile: Answers) {
     const { data } = await supabase.auth.getSession();
     if (!data.session) {
-      // ponytail: sign-up skipped for now, so the answers aren't saved yet. To restore:
-      // router.push({ pathname: '/sign-up', params: { profile: JSON.stringify(profile) } });
-      router.replace('/home');
+      router.push({ pathname: '/sign-up', params: { profile: JSON.stringify(profile) } });
       return;
     }
     try {

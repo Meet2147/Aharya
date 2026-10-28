@@ -65,6 +65,7 @@ export async function signInWithGoogle() {
 
 const first = (v?: string | string[]) => (Array.isArray(v) ? v[0] : v)?.trim() || null;
 const num = (v?: string | string[]) => (first(v) ? Number(first(v)) : null);
+const yes = (v?: string | string[]) => (first(v) ? first(v) === 'Yes' : null);
 
 /** Saves the onboarding answers against the signed-in user (and their email). */
 export async function saveProfile(a: Answers) {
@@ -82,9 +83,39 @@ export async function saveProfile(a: Answers) {
     diet: first(a.diet),
     conditions,
     allergies: first(a.allergies),
+    phone: first(a.phone),
+    alcohol: yes(a.alcohol),
+    smoker: yes(a.smoker),
     updated_at: new Date().toISOString(),
   });
   if (error) throw error;
+}
+
+export type Profile = {
+  name: string | null;
+  age: number | null;
+  sex: string | null;
+  height_cm: number | null;
+  weight_kg: number | null;
+  diet: string | null;
+  conditions: string[];
+  allergies: string | null;
+  phone: string | null;
+  alcohol: boolean | null;
+  smoker: boolean | null;
+};
+
+/** The signed-in user's saved onboarding answers, or null. */
+export async function getProfile() {
+  const { data } = await supabase.auth.getUser();
+  if (!data.user) return null;
+  const { data: row, error } = await supabase
+    .from('profiles')
+    .select('name, age, sex, height_cm, weight_kg, diet, conditions, allergies, phone, alcohol, smoker')
+    .eq('id', data.user.id)
+    .maybeSingle();
+  if (error) throw error;
+  return row as Profile | null;
 }
 
 /** True if the signed-in user already finished onboarding. */

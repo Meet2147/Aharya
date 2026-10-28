@@ -1,5 +1,6 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
+import { Alert } from 'react-native';
 
 import {
   AuthScreen,
@@ -9,7 +10,7 @@ import {
   PrimaryButton,
   SocialButtons,
 } from '@/components/auth';
-import { parseProfile } from '@/lib/supabase';
+import { parseProfile, saveProfile, supabase } from '@/lib/supabase';
 
 export default function SignUp() {
   // Onboarding answers (name, age, sex, ...) collected before this screen
@@ -20,15 +21,21 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
 
-  function onSubmit() {
+  async function onSubmit() {
     const next = {
       email: isEmail(email) ? undefined : 'Enter a valid email address',
       password: password.length >= 6 ? undefined : 'Password must be at least 6 characters',
     };
     setErrors(next);
     if (next.email || next.password) return;
-    // ponytail: no backend yet, create the account with { email, password, profile } here
-    router.push({ pathname: '/verify', params: { email } });
+    const { data, error } = await supabase.auth.signUp({ email: email.trim(), password });
+    if (error) return Alert.alert('Could not create your account', error.message);
+    // Email confirmation off: signed in already. On: the profile rides along to verify.
+    if (data.session) {
+      if (answers) await saveProfile(answers).catch((e) => Alert.alert('Could not save your profile', e.message));
+      return router.replace('/home');
+    }
+    router.push({ pathname: '/verify', params: { email: email.trim(), profile } });
   }
 
   return (

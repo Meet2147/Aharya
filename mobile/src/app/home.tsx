@@ -1,3 +1,4 @@
+import * as DocumentPicker from 'expo-document-picker';
 import { SymbolView, type AndroidSymbol, type SFSymbol } from 'expo-symbols';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
@@ -23,6 +24,16 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import {
+  getAssessment,
+  getBiomarkers,
+  latestAssessmentId,
+  submitAssessment,
+  type Assessment,
+  type Biomarker,
+  type ReportKind,
+} from '@/lib/api';
+
 // Palette: black and white only
 const BLACK = '#000000';
 const WHITE = '#FFFFFF';
@@ -44,25 +55,57 @@ const SPRING = { duration: 340, dampingRatio: 1 };
 type Icon = { ios: SFSymbol; android: AndroidSymbol };
 const sym = (i: Icon) => ({ ...i, web: i.android });
 
-// ponytail: sample data until the plan and food log come from the backend
-const REPORT_DATE = '12 Oct';
-const KCAL = { eaten: 860, goal: 1350 };
-const MACROS = [
-  { name: 'Protein', eaten: 52, goal: 80 },
-  { name: 'Fat', eaten: 30, goal: 45 },
-  { name: 'Carbs', eaten: 96, goal: 150 },
-];
+// ponytail: "eaten" and habits are sample data until there is a food log; goals come from the report
+const EATEN = { kcal: 860, protein: 52, fat: 30, carbs: 96 };
+const GOALS = { calories_kcal: 1350, protein_g: 80, fat_g: 45, carbs_g: 150 };
 // Last 30 days, oldest first: 1 = done, 0 = not
 const HABITS = [
   { name: 'Meal plan', days: '110111011111101111011111110111', week: 6 },
   { name: 'Vitamin D', days: '000011111111101111111111111111', week: 7 },
 ];
-const MARKERS = [
-  { name: 'Vitamin D', value: '18', unit: 'ng/mL', status: 'Low' },
-  { name: 'Cholesterol', value: '210', unit: 'mg/dL', status: 'High' },
-  { name: 'Haemoglobin', value: '13.8', unit: 'g/dL', status: 'Normal' },
-  { name: 'Sugar', value: '92', unit: 'mg/dL', status: 'Normal' },
-] as const;
+const FLAG = { low: 'Low', high: 'High', abnormal: 'High', normal: 'Normal' } as const;
+const RANK = { Low: 0, High: 0, Normal: 1 };
+const PENDING = ['queued', 'processing'];
+
+/** The latest report's markers, out-of-range first; polls while the server is still reading it. */
+function toMarkers(list: Biomarker[]) {
+  return list
+    .filter((b) => b.code && b.flag && typeof b.value === 'number')
+    .map((b) => ({ name: b.name, value: String(b.value), unit: b.unit ?? '', status: FLAG[b.flag!] }))
+    .sort((a, b) => RANK[a.status] - RANK[b.status])
+    .slice(0, 10);
+}
+
+function useLatestReport() {
+  const [id, setId] = useState(latestAssessmentId);
+  const [assessment, setAssessment] = useState<Assessment>();
+  const [markers, setMarkers] = useState<ReturnType<typeof toMarkers>>([]);
+  useEffect(() => {
+    if (!id) return;
+    let timer: ReturnType<typeof setTimeout>;
+    let live = true;
+    async function load() {
+      try {
+        const a = await getAssessment(id!);
+        if (!live) return;
+        setAssessment(a);
+        if (PENDING.includes(a.status)) timer = setTimeout(load, 3000);
+        else setMarkers(toMarkers(await getBiomarkers(id!)));
+      } catch {
+        if (live) timer = setTimeout(load, 10000); // server down: keep trying quietly
+      }
+    }
+    load();
+    return () => {
+      live = false;
+      clearTimeout(timer);
+    };
+  }, [id]);
+  return { id, assessment, markers, setId };
+}
+
+const shortDate = (iso: string) =>
+  new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
 
 const soon = () => Alert.alert('Coming soon', 'This part is not ready yet.');
 
@@ -73,6 +116,52 @@ export default function Home() {
   const dialR = Math.max(60, Math.min(92, Math.floor((width - 80 - 2 * SIDE_W) / 2)));
   const [remaining, setRemaining] = useState(false);
   const [adding, setAdding] = useState(false);
+  // Urine and InBody wait here until a blood report sends them all together
+  const [held, setHeld] = useState<Partial<Record<ReportKind, DocumentPicker.DocumentPickerAsset>>>({});
+  const [sending, setSending] = useState(false);
+  const { id, assessment, markers, setId } = useLatestReport();
+  const g = assessment?.targets ?? GOALS;
+  const KCAL = { eaten: EATEN.kcal, goal: g.calories_kcal };
+  const MACROS = [
+    { name: 'Protein', eaten: EATEN.protein, goal: g.protein_g },
+    { name: 'Fat', eaten: EATEN.fat, goal: g.fat_g },
+    { name: 'Carbs', eaten: EATEN.carbs, goal: g.carbs_g },
+  ];
+  const blood = assessment?.reports.find((r) => r.kind === 'blood');
+  const REPORT_DATE = assessment ? shortDate(blood?.report_date ?? assessment.created_at) : 'Sample';
+  const status = assessment?.status;
+
+  async function addReport(kind: ReportKind) {
+    setAdding(false);
+    const pick = await DocumentPicker.getDocumentAsync({ type: ['application/pdf', 'image/jpeg', 'image/png'] });
+    if (pick.canceled) return;
+    const file = pick.assets[0];
+    if (kind !== 'blood') {
+      setHeld((h) => ({ ...h, [kind]: file }));
+      return Alert.alert('Report added', 'It will be sent with your blood report. Tap + and choose Blood next.');
+    }
+    Alert.alert(
+      'Analyse your reports?',
+      'Your reports and profile are sent to Aharya to read your results and build your meal plan.',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Agree and send',
+          onPress: async () => {
+            setSending(true);
+            try {
+              setId(await submitAssessment({ ...held, blood: file }));
+              setHeld({});
+            } catch (e) {
+              Alert.alert('Could not send your reports', e instanceof Error ? e.message : String(e));
+            } finally {
+              setSending(false);
+            }
+          },
+        },
+      ],
+    );
+  }
   const tabPad = Math.max(insets.bottom, 10);
   const today = new Date()
     .toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' })
@@ -177,7 +266,22 @@ export default function Home() {
           showsHorizontalScrollIndicator={false}
           style={styles.bleed}
           contentContainerStyle={styles.markers}>
-          {MARKERS.map((m) => {
+          {markers.length === 0 && (
+            <Text style={styles.empty}>
+              {sending
+                ? 'Sending your reports…'
+                : status && PENDING.includes(status)
+                  ? 'Reading your reports. This takes a minute.'
+                  : status === 'needs_doctor'
+                    ? 'Some results need a doctor. Please see one before starting a diet plan.'
+                    : status === 'failed'
+                      ? (assessment?.error ?? 'We could not read that report.')
+                      : id
+                        ? 'Loading your markers…'
+                        : 'Tap + and add your blood report to see your markers here.'}
+            </Text>
+          )}
+          {markers.map((m) => {
             const tone = STATUS[m.status];
             return (
               <Press
@@ -223,14 +327,12 @@ export default function Home() {
           <FanItem
             key={r.name}
             report={r}
+            added={!!held[r.kind]}
             index={i}
             open={adding}
             left={width / 2 - FAN_SIZE / 2}
             bottom={tabPad + 26 - FAN_SIZE / 2}
-            onPress={() => {
-              setAdding(false);
-              soon();
-            }}
+            onPress={() => addReport(r.kind)}
           />
         ))}
       </View>
@@ -239,10 +341,10 @@ export default function Home() {
 }
 
 // Fanned in an arc above the +: up-left, straight up, up-right
-const REPORTS: { name: string; icon: Icon; angle: number }[] = [
-  { name: 'Blood', icon: { ios: 'drop.fill', android: 'bloodtype' }, angle: 135 },
-  { name: 'Urine', icon: { ios: 'flask.fill', android: 'science' }, angle: 90 },
-  { name: 'InBody', icon: { ios: 'figure.stand', android: 'accessibility_new' }, angle: 45 },
+const REPORTS: { kind: ReportKind; name: string; icon: Icon; angle: number }[] = [
+  { kind: 'blood', name: 'Blood', icon: { ios: 'drop.fill', android: 'bloodtype' }, angle: 135 },
+  { kind: 'urine', name: 'Urine', icon: { ios: 'flask.fill', android: 'science' }, angle: 90 },
+  { kind: 'inbody', name: 'InBody', icon: { ios: 'figure.stand', android: 'accessibility_new' }, angle: 45 },
 ];
 const FAN_SIZE = 60;
 const FAN_RADIUS = 120;
@@ -252,6 +354,7 @@ const FAN_IN = { duration: 260, dampingRatio: 1 };
 
 function FanItem({
   report,
+  added,
   index,
   open,
   left,
@@ -259,6 +362,7 @@ function FanItem({
   onPress,
 }: {
   report: (typeof REPORTS)[number];
+  added: boolean;
   index: number;
   open: boolean;
   left: number;
@@ -280,10 +384,10 @@ function FanItem({
   }));
   return (
     <Animated.View style={[styles.fanItem, { left, bottom }, style]} pointerEvents={open ? 'box-none' : 'none'}>
-      <Press onPress={onPress} accessibilityLabel={`Upload ${report.name.toLowerCase()} report`} style={styles.fanCircle}>
+      <Press onPress={onPress} accessibilityLabel={`Upload ${report.name.toLowerCase()} report${added ? ', added' : ''}`} style={styles.fanCircle}>
         <SymbolView name={sym(report.icon)} size={22} tintColor={BLACK} />
       </Press>
-      <Text style={styles.fanLabel}>{report.name}</Text>
+      <Text style={styles.fanLabel}>{added ? `${report.name} ✓` : report.name}</Text>
     </Animated.View>
   );
 }
@@ -530,6 +634,7 @@ const styles = StyleSheet.create({
   bubbleUnit: { color: QUIET, fontSize: 9, fontWeight: '600', marginTop: -1 },
   personName: { color: WHITE, fontSize: 13, fontWeight: '500', marginTop: 10 },
   personRole: { fontSize: 12, fontWeight: '600', marginTop: 2 },
+  empty: { color: MUTED, fontSize: 14, lineHeight: 20, maxWidth: 300 },
 
   scrim: { backgroundColor: 'rgba(0,0,0,0.72)' },
   // Width wider than the circle so the label fits; centred on the + by the left/bottom passed in

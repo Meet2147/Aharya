@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import { useState } from 'react';
-import { Pressable, Text } from 'react-native';
+import { Alert, Pressable, Text } from 'react-native';
 
 import {
   AuthScreen,
@@ -11,6 +11,7 @@ import {
   SocialButtons,
   useAuthTheme,
 } from '@/components/auth';
+import { hasProfile, supabase } from '@/lib/supabase';
 
 export default function SignIn() {
   const { styles } = useAuthTheme();
@@ -18,15 +19,16 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
 
-  function onSubmit() {
+  async function onSubmit() {
     const next = {
       email: isEmail(email) ? undefined : 'Enter a valid email address',
       password: password.length >= 6 ? undefined : 'Password must be at least 6 characters',
     };
     setErrors(next);
     if (next.email || next.password) return;
-    // ponytail: no auth backend yet, wire real sign-in here
-    router.replace('/home');
+    const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
+    if (error) return Alert.alert('Could not sign in', error.message);
+    router.replace((await hasProfile()) ? '/home' : '/onboarding');
   }
 
   return (
