@@ -22,29 +22,26 @@ import { useColorScheme } from '@/hooks/use-color-scheme';
 import { hasProfile, saveProfile, signInWithGoogle, type Answers } from '@/lib/supabase';
 
 const brand = {
-  teal: '#0F8B8D',
-  leaf: '#6FC3BE',
-  deep: '#0B4F55',
   white: '#FFFFFF',
   black: '#000000',
 };
 
-// Small text on white uses Deep: Teal on white is ~4.1:1, under the 4.5:1 AA minimum
+// Black and white only
 const palettes = {
   dark: {
     ...brand,
     bg: brand.black,
-    title: brand.teal,
-    text: brand.teal,
+    title: brand.white,
+    text: brand.white,
     muted: 'rgba(255,255,255,0.7)',
     placeholder: 'rgba(255,255,255,0.5)',
     surface: 'rgba(255,255,255,0.08)',
     border: 'rgba(255,255,255,0.35)',
     card: '#1C1C1E',
-    link: brand.leaf,
+    link: brand.white,
     error: '#FFB4A9',
     buttonBg: brand.white,
-    buttonText: brand.deep,
+    buttonText: brand.black,
     socialBg: 'rgba(255,255,255,0.12)',
     socialText: brand.white,
     statusBar: 'light' as 'light' | 'dark',
@@ -52,16 +49,16 @@ const palettes = {
   light: {
     ...brand,
     bg: brand.white,
-    title: brand.teal,
-    text: brand.deep,
+    title: brand.black,
+    text: brand.black,
     muted: 'rgba(0,0,0,0.6)',
     placeholder: 'rgba(0,0,0,0.45)',
-    surface: 'rgba(11,79,85,0.04)',
+    surface: 'rgba(0,0,0,0.04)',
     border: 'rgba(0,0,0,0.45)',
-    card: '#F1F4F4',
-    link: brand.deep,
+    card: '#F2F2F2',
+    link: brand.black,
     error: '#B42318',
-    buttonBg: brand.deep,
+    buttonBg: brand.black,
     buttonText: brand.white,
     socialBg: '#F2F2F2',
     socialText: brand.black,
@@ -147,8 +144,8 @@ export const light = (rgb: string, alpha: number, shape: string) => {
 };
 
 // The intro's closing light is one tall band (no joins, so no seams) that travels up through the
-// screen: a clear-to-teal feather on top, a teal body as tall as the screen with a soft leaf core
-// at its base, and a teal-to-clear feather below. Feathers are fractions of screen height.
+// screen: a clear-to-grey feather on top, a grey body as tall as the screen with a soft white core
+// at its base, and a grey-to-clear feather below. Feathers are fractions of screen height.
 const TOP = 0.6;
 const BOTTOM = 0.6;
 const SPAN = TOP + 1 + BOTTOM;
@@ -156,8 +153,8 @@ const t = (100 * TOP) / SPAN; // body top, % of the band
 const b = (100 * (TOP + 1)) / SPAN; // body bottom
 const SWEEP = gradient(
   [
-    light('140,210,204', 0.6, `ellipse 90% 30% at 50% ${b}%`),
-    `linear-gradient(180deg, rgba(15,139,141,0) 0%, rgba(15,139,141,0.07) ${t * 0.4}%, rgba(15,139,141,0.25) ${t * 0.7}%, rgba(15,139,141,0.52) ${t}%, rgba(15,139,141,0.68) ${(t + b) / 2}%, rgba(15,139,141,0.75) ${b}%, rgba(15,139,141,0.5) ${b + (100 - b) * 0.3}%, rgba(15,139,141,0.18) ${b + (100 - b) * 0.65}%, rgba(15,139,141,0) 100%)`,
+    light('255,255,255', 0.3, `ellipse 90% 30% at 50% ${b}%`),
+    `linear-gradient(180deg, rgba(64,64,64,0) 0%, rgba(64,64,64,0.07) ${t * 0.4}%, rgba(64,64,64,0.25) ${t * 0.7}%, rgba(64,64,64,0.52) ${t}%, rgba(64,64,64,0.68) ${(t + b) / 2}%, rgba(64,64,64,0.75) ${b}%, rgba(64,64,64,0.5) ${b + (100 - b) * 0.3}%, rgba(64,64,64,0.18) ${b + (100 - b) * 0.65}%, rgba(64,64,64,0) 100%)`,
   ].join(', '),
 );
 
@@ -169,7 +166,7 @@ const SWEEP = gradient(
 export function IntroLight({
   progress,
 }: {
-  progress: Animated.Value | Animated.AnimatedInterpolation<number>;
+  progress: Animated.Value;
 }) {
   // Start from the full screen height (what a full-screen view measures, edge to edge) so both
   // screens draw the same frame from their very first render: no jump at the hand-off

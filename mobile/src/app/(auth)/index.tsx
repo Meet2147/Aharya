@@ -15,13 +15,13 @@ const BLACK = '#000000';
 const LINES = ['Your health,', 'made simple.', 'Reports, explained.', 'Meals, made for you.'];
 const LINE_HEIGHT = 44;
 
-// Soft teal glow from the bottom edge, brightening as lines arrive
+// Soft white glow from the bottom edge, brightening as lines arrive
 const GLOW = gradient(
   [
-    light('111,195,190', 0.5, 'ellipse 40% 45% at 50% 100%'),
-    light('15,139,141', 0.8, 'ellipse 80% 100% at 50% 100%'),
-    light('15,139,141', 0.45, 'ellipse 35% 70% at 18% 100%'),
-    light('11,110,112', 0.55, 'ellipse 35% 70% at 82% 100%'),
+    light('255,255,255', 0.22, 'ellipse 40% 45% at 50% 100%'),
+    light('110,110,110', 0.6, 'ellipse 80% 100% at 50% 100%'),
+    light('90,90,90', 0.4, 'ellipse 35% 70% at 18% 100%'),
+    light('90,90,90', 0.4, 'ellipse 35% 70% at 82% 100%'),
   ].join(', '),
 );
 

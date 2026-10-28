@@ -1,7 +1,7 @@
-import { router, useLocalSearchParams } from 'expo-router';
+import { router, useCanGoBack, useLocalSearchParams } from 'expo-router';
 import { SymbolView } from 'expo-symbols';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect, useRef, useState } from 'react';
+import { type ComponentRef, useEffect, useRef, useState } from 'react';
 import {
   Alert,
   Animated,
@@ -195,7 +195,8 @@ export default function Onboarding() {
   // is no hand-off to glitch. The page fades in underneath as the light passes.
   const { intro } = useLocalSearchParams<{ intro?: string }>();
   const [sweep] = useState(() => new Animated.Value(intro ? 0 : 2));
-  const input = useRef<TextInput>(null);
+  const input = useRef<ComponentRef<typeof TextInput>>(null);
+  const canGoBack = useCanGoBack();
   useEffect(() => {
     if (!intro) return;
     Animated.timing(sweep, {
@@ -314,10 +315,10 @@ export default function Onboarding() {
             <View style={local.topBar}>
               <Pressable
                 onPress={back}
-                disabled={index === 0 && !router.canGoBack()}
+                disabled={index === 0 && !canGoBack}
                 accessibilityRole="button"
                 accessibilityLabel="Previous question"
-                style={[local.iconBtn, index === 0 && !router.canGoBack() && local.hidden]}>
+                style={[local.iconBtn, index === 0 && !canGoBack && local.hidden]}>
                 <SymbolView
                   name={{ ios: 'chevron.left', android: 'arrow_back', web: 'arrow_back' }}
                   size={22}
