@@ -10,7 +10,8 @@ import {
   PrimaryButton,
   SocialButtons,
 } from '@/components/auth';
-import { parseProfile, saveProfile, supabase } from '@/lib/supabase';
+import { completeSignUp } from '@/lib/api';
+import { parseProfile, supabase } from '@/lib/supabase';
 
 export default function SignUp() {
   // Onboarding answers (name, age, sex, ...) collected before this screen
@@ -32,7 +33,7 @@ export default function SignUp() {
     if (error) return Alert.alert('Could not create your account', error.message);
     // Email confirmation off: signed in already. On: the profile rides along to verify.
     if (data.session) {
-      if (answers) await saveProfile(answers).catch((e) => Alert.alert('Could not save your profile', e.message));
+      await completeSignUp(answers);
       return router.replace('/home');
     }
     router.push({ pathname: '/verify', params: { email: email.trim(), profile } });

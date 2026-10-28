@@ -62,10 +62,10 @@ async def create_assessment(
     gender: Annotated[Gender, Form()],
     alcohol: Annotated[bool, Form()],
     smoker: Annotated[bool, Form()],
-    email: Annotated[str, Form()],
     phone: Annotated[str, Form()],
     consent: Annotated[bool, Form(description="User agrees to their health reports being processed.")],
     blood_report: Annotated[UploadFile, File()],
+    email: Annotated[str | None, Form(description="Optional: the app reads reports before the account exists")] = None,
     urine_report: Annotated[UploadFile | None, File()] = None,
     inbody_report: Annotated[UploadFile | None, File()] = None,
     diet_type: Annotated[DietType, Form()] = "veg",
@@ -82,13 +82,18 @@ async def create_assessment(
 ):
     if not consent:
         raise _unprocessable("consent", "Consent is required to process health reports.")
-    try:
-        email = _EMAIL.validate_python(email.strip().lower())
-    except ValidationError:
-        raise _unprocessable("email", "Enter a valid email address.") from None
     phone = re.sub(r"[\s-]", "", phone)
     if not _PHONE.match(phone):
         raise _unprocessable("phone", "Enter a valid 10-digit Indian mobile number.")
+    if email:
+        try:
+            email = _EMAIL.validate_python(email.strip().lower())
+        except ValidationError:
+            raise _unprocessable("email", "Enter a valid email address.") from None
+    else:
+        # ponytail: no email yet (reports read before sign-up), so file the user under their phone in a
+        # reserved domain that can never receive mail; add a nullable email column when accounts reach the API
+        email = f"{phone[-10:]}@phone.aharya.invalid"
 
     uploads = [("blood", "blood_report", blood_report)]
     if urine_report is not None:

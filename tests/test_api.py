@@ -49,6 +49,14 @@ def test_blood_report_alone_is_enough(client, form, files):
     assert {b["source"] for b in biomarkers} == {"blood"}
 
 
+def test_email_is_optional(client, form, files):
+    form.pop("email")
+    created = _submit(client, form, files)
+    assert created.status_code == 202
+    assessment_id = created.json()["assessment_id"]
+    assert client.get(f"/v1/assessments/{assessment_id}").json()["status"] == "completed"
+
+
 def test_urgent_value_blocks_the_plan(client, form, files):
     rows = BLOOD_ROWS + ["HbA1c                        11.4          %             4.0 - 5.6"]
     files["blood_report"] = ("blood.pdf", make_pdf(rows), "application/pdf")

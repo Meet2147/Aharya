@@ -4,6 +4,8 @@ import 'expo-sqlite/localStorage/install';
 import { createClient } from '@supabase/supabase-js';
 import { TurboModuleRegistry } from 'react-native';
 
+import { clearCache } from '@/lib/cache';
+
 export const supabase = createClient(
   process.env.EXPO_PUBLIC_SUPABASE_URL!,
   process.env.EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
@@ -52,6 +54,8 @@ async function google() {
 export async function signInWithGoogle() {
   const { GoogleSignin, isSuccessResponse } = await google();
   await GoogleSignin.hasPlayServices();
+  // Forget the last Google account so the chooser always shows instead of silently reusing it
+  await GoogleSignin.signOut().catch(() => {});
   const res = await GoogleSignin.signIn();
   if (!isSuccessResponse(res)) return false;
   if (!res.data.idToken) throw new Error('Google did not return an ID token.');
@@ -67,25 +71,29 @@ const first = (v?: string | string[]) => (Array.isArray(v) ? v[0] : v)?.trim() |
 const num = (v?: string | string[]) => (first(v) ? Number(first(v)) : null);
 const yes = (v?: string | string[]) => (first(v) ? first(v) === 'Yes' : null);
 
+/** Onboarding answers in the shape of a saved profile. */
+export const toProfile = (a: Answers): Profile => ({
+  name: first(a.name),
+  age: num(a.age),
+  sex: first(a.sex),
+  height_cm: num(a.height),
+  weight_kg: num(a.weight),
+  diet: first(a.diet),
+  conditions: Array.isArray(a.conditions) ? a.conditions.filter((c) => c !== 'None') : [],
+  allergies: first(a.allergies),
+  phone: first(a.phone),
+  alcohol: yes(a.alcohol),
+  smoker: yes(a.smoker),
+});
+
 /** Saves the onboarding answers against the signed-in user (and their email). */
 export async function saveProfile(a: Answers) {
   const { data } = await supabase.auth.getUser();
   if (!data.user) throw new Error('Not signed in.');
-  const conditions = Array.isArray(a.conditions) ? a.conditions.filter((c) => c !== 'None') : [];
   const { error } = await supabase.from('profiles').upsert({
     id: data.user.id,
     email: data.user.email,
-    name: first(a.name),
-    age: num(a.age),
-    sex: first(a.sex),
-    height_cm: num(a.height),
-    weight_kg: num(a.weight),
-    diet: first(a.diet),
-    conditions,
-    allergies: first(a.allergies),
-    phone: first(a.phone),
-    alcohol: yes(a.alcohol),
-    smoker: yes(a.smoker),
+    ...toProfile(a),
     updated_at: new Date().toISOString(),
   });
   if (error) throw error;
@@ -133,6 +141,7 @@ export async function hasProfile() {
 
 export async function signOut() {
   await supabase.auth.signOut();
+  clearCache();
   // Also clear Google's cached account so the account picker shows next time
   await google()
     .then(({ GoogleSignin }) => GoogleSignin.signOut())

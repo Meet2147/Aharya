@@ -3,6 +3,7 @@ import { router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useState, type ReactNode } from 'react';
 import {
+  ActivityIndicator,
   Alert,
   Animated,
   Dimensions,
@@ -19,7 +20,8 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import { hasProfile, saveProfile, signInWithGoogle, type Answers } from '@/lib/supabase';
+import { completeSignUp } from '@/lib/api';
+import { hasProfile, signInWithGoogle, type Answers } from '@/lib/supabase';
 
 const brand = {
   white: '#FFFFFF',
@@ -290,14 +292,17 @@ export function SocialButtons({ profile }: { profile?: Answers }) {
   async function google() {
     setBusy(true);
     try {
-      if (!(await signInWithGoogle())) return; // cancelled
-      if (profile) await saveProfile(profile);
+      if (!(await signInWithGoogle())) return setBusy(false); // cancelled
+      // Spinner stays on: this screen is replaced, so the button never flashes back
+      if (profile) {
+        await completeSignUp(profile);
+        return router.replace('/home');
+      }
       // Signed in from the login screen with no saved profile yet: collect it first
-      router.replace(profile || (await hasProfile()) ? '/home' : '/onboarding');
+      router.replace((await hasProfile()) ? '/home' : '/onboarding');
     } catch (e) {
-      Alert.alert('Google sign-in failed', e instanceof Error ? e.message : String(e));
-    } finally {
       setBusy(false);
+      Alert.alert('Google sign-in failed', e instanceof Error ? e.message : String(e));
     }
   }
   return (
@@ -325,14 +330,21 @@ export function SocialButtons({ profile }: { profile?: Answers }) {
         disabled={busy}
         accessibilityRole="button"
         accessibilityState={{ busy }}
-        style={({ pressed }) => [styles.social, (pressed || busy) && styles.pressed]}>
-        <Image
-          source={require('@/assets/images/brands/google.svg')}
-          style={styles.brandLogo}
-          contentFit="contain"
-          accessible={false}
-        />
-        <Text style={styles.socialText}>Continue with Google</Text>
+        style={({ pressed }) => [styles.social, pressed && styles.pressed]}>
+        {/* Stays up from picking the account until home replaces this screen */}
+        {busy ? (
+          <ActivityIndicator color={c.socialText} accessibilityLabel="Signing in" />
+        ) : (
+          <>
+            <Image
+              source={require('@/assets/images/brands/google.svg')}
+              style={styles.brandLogo}
+              contentFit="contain"
+              accessible={false}
+            />
+            <Text style={styles.socialText}>Continue with Google</Text>
+          </>
+        )}
       </Pressable>
     </>
   );

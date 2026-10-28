@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { Alert, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { AuthScreen, PrimaryButton, useAuthTheme } from '@/components/auth';
-import { parseProfile, saveProfile, supabase } from '@/lib/supabase';
+import { completeSignUp } from '@/lib/api';
+import { parseProfile, supabase } from '@/lib/supabase';
 
 // Supabase's default email OTP length
 const LENGTH = 6;
@@ -20,8 +21,7 @@ export default function Verify() {
     const { error: err } = await supabase.auth.verifyOtp({ email, token: code, type: reset ? 'recovery' : 'email' });
     if (err) return setError(err.message);
     if (reset) return router.push('/new-password');
-    const answers = parseProfile(profile);
-    if (answers) await saveProfile(answers).catch((e) => Alert.alert('Could not save your profile', e.message));
+    await completeSignUp(parseProfile(profile));
     router.replace('/home');
   }
 

@@ -1,5 +1,4 @@
 import { router, useCanGoBack, useLocalSearchParams } from 'expo-router';
-import { SymbolView } from 'expo-symbols';
 import { StatusBar } from 'expo-status-bar';
 import { type ComponentRef, useEffect, useRef, useState } from 'react';
 import {
@@ -18,8 +17,11 @@ import {
   type KeyboardTypeOptions,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { CaretLeftIcon as CaretLeft } from 'phosphor-react-native/src/icons/CaretLeft';
+import { CheckIcon as Check } from 'phosphor-react-native/src/icons/Check';
 
 import { IntroLight, PrimaryButton, useAuthTheme } from '@/components/auth';
+import { Glyph } from '@/components/ui';
 import { saveProfile, supabase, type Answers } from '@/lib/supabase';
 
 // Copy can address the user by first name once we know it ('' before that)
@@ -241,6 +243,8 @@ export default function Onboarding() {
   const title = say(step.title, name);
   const last = index === STEPS.length - 1;
 
+  const finishing = useRef(false);
+
   const set = (v: string | string[]) => {
     setAnswers((a) => ({ ...a, [step.key]: v }));
     setError(undefined);
@@ -256,16 +260,18 @@ export default function Onboarding() {
   // New users: profile first, then sign-up saves it with the account.
   // Already signed in (Google login with no profile yet): save it now.
   async function finish(profile: Answers) {
-    const { data } = await supabase.auth.getSession();
-    if (!data.session) {
-      router.push({ pathname: '/sign-up', params: { profile: JSON.stringify(profile) } });
-      return;
-    }
+    // Keyboard "done" and the Finish button can both fire while the session check is pending
+    if (finishing.current) return;
+    finishing.current = true;
     try {
-      await saveProfile(profile);
-      router.replace('/home');
+      const { data } = await supabase.auth.getSession();
+      // Reports next, then sign-up; a Google user signing in for the first time already has an account
+      if (data.session) await saveProfile(profile);
+      router.push({ pathname: '/upload', params: { profile: JSON.stringify(profile) } });
     } catch (e) {
       Alert.alert('Could not save your profile', e instanceof Error ? e.message : String(e));
+    } finally {
+      finishing.current = false;
     }
   }
 
@@ -343,10 +349,11 @@ export default function Onboarding() {
                 accessibilityRole="button"
                 accessibilityLabel="Previous question"
                 style={[local.iconBtn, index === 0 && !canGoBack && local.hidden]}>
-                <SymbolView
-                  name={{ ios: 'chevron.left', android: 'arrow_back', web: 'arrow_back' }}
+                <Glyph
+                  icon={CaretLeft}
+                  weight="bold"
                   size={22}
-                  tintColor={c.title}
+                  color={c.title}
                 />
               </Pressable>
               <View
@@ -438,11 +445,11 @@ export default function Onboarding() {
                             on && { backgroundColor: fg },
                           ]}>
                           {on && (
-                            <SymbolView
-                              name={{ ios: 'checkmark', android: 'check', web: 'check' }}
+                            <Glyph
+                              icon={Check}
                               size={13}
                               weight="bold"
-                              tintColor={c.buttonBg}
+                              color={c.buttonBg}
                             />
                           )}
                         </View>

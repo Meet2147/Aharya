@@ -1,18 +1,14 @@
-import * as DocumentPicker from 'expo-document-picker';
-import { SymbolView, type AndroidSymbol, type SFSymbol } from 'expo-symbols';
+import { router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect, useState } from 'react';
+import { type ComponentRef, useEffect, useRef, useState } from 'react';
 import {
   Alert,
-  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
   Text,
   View,
   useWindowDimensions,
-  type PressableProps,
-  type StyleProp,
   type ViewStyle,
 } from 'react-native';
 import Animated, {
@@ -25,49 +21,39 @@ import Animated, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import {
-  getAssessment,
-  getBiomarkers,
-  latestAssessmentId,
-  submitAssessment,
-  type Assessment,
-  type Biomarker,
-  type ReportKind,
-} from '@/lib/api';
+  BLACK,
+  Glyph,
+  card,
+  MEAL_SLOTS,
+  planToday,
+  upNext,
+  MUTED,
+  Press,
+  QUIET,
+  ROUNDED,
+  STATUS,
+  TRACK,
+  WHITE,
+  type Icon,
+} from '@/components/ui';
+import { DotsThreeCircleIcon as DotsThreeCircle } from 'phosphor-react-native/src/icons/DotsThreeCircle';
+import { DropIcon as Drop } from 'phosphor-react-native/src/icons/Drop';
+import { FileTextIcon as FileText } from 'phosphor-react-native/src/icons/FileText';
+import { FlaskIcon as Flask } from 'phosphor-react-native/src/icons/Flask';
+import { ForkKnifeIcon as ForkKnife } from 'phosphor-react-native/src/icons/ForkKnife';
+import { PersonSimpleIcon as PersonSimple } from 'phosphor-react-native/src/icons/PersonSimple';
+import { PlusIcon as Plus } from 'phosphor-react-native/src/icons/Plus';
+import { SquaresFourIcon as SquaresFour } from 'phosphor-react-native/src/icons/SquaresFour';
+import { UserIcon as User } from 'phosphor-react-native/src/icons/User';
+import { PENDING, useAssessment } from '@/hooks/use-assessment';
+import { getBiomarkers, getPlan, latestAssessmentId, type Biomarker, type Plan } from '@/lib/api';
+import { useCached } from '@/lib/cache';
+import { getProfile } from '@/lib/supabase';
 
-// Palette: black and white only
-const BLACK = '#000000';
-const WHITE = '#FFFFFF';
-const MUTED = 'rgba(255,255,255,0.6)';
-const QUIET = 'rgba(255,255,255,0.42)';
-const TRACK = 'rgba(255,255,255,0.1)';
-const RIM = 'rgba(255,255,255,0.1)';
-// The one place colour is allowed: marker status (always shown with the word too)
-const STATUS = {
-  Low: { color: '#FFB340', glow: 'rgba(255,179,64,0.35)' },
-  Normal: { color: '#30D158', glow: 'rgba(48,209,88,0.3)' },
-  High: { color: '#FF453A', glow: 'rgba(255,69,58,0.35)' },
-};
-// SF Rounded for numbers on iOS; Android keeps its system font
-const ROUNDED = Platform.select({ ios: 'ui-rounded' });
-// Critically damped: settles without overshoot, and re-targets from wherever it is mid-motion
-const SPRING = { duration: 340, dampingRatio: 1 };
-
-type Icon = { ios: SFSymbol; android: AndroidSymbol };
-const sym = (i: Icon) => ({ ...i, web: i.android });
-
-// ponytail: "eaten" and habits are sample data until there is a food log; goals come from the report
-const EATEN = { kcal: 860, protein: 52, fat: 30, carbs: 96 };
-const GOALS = { calories_kcal: 1350, protein_g: 80, fat_g: 45, carbs_g: 150 };
-// Last 30 days, oldest first: 1 = done, 0 = not
-const HABITS = [
-  { name: 'Meal plan', days: '110111011111101111011111110111', week: 6 },
-  { name: 'Vitamin D', days: '000011111111101111111111111111', week: 7 },
-];
 const FLAG = { low: 'Low', high: 'High', abnormal: 'High', normal: 'Normal' } as const;
 const RANK = { Low: 0, High: 0, Normal: 1 };
-const PENDING = ['queued', 'processing'];
 
-/** The latest report's markers, out-of-range first; polls while the server is still reading it. */
+/** The latest report's markers, out-of-range first. */
 function toMarkers(list: Biomarker[]) {
   return list
     .filter((b) => b.code && b.flag && typeof b.value === 'number')
@@ -77,31 +63,24 @@ function toMarkers(list: Biomarker[]) {
 }
 
 function useLatestReport() {
-  const [id, setId] = useState(latestAssessmentId);
-  const [assessment, setAssessment] = useState<Assessment>();
-  const [markers, setMarkers] = useState<ReturnType<typeof toMarkers>>([]);
-  useEffect(() => {
-    if (!id) return;
-    let timer: ReturnType<typeof setTimeout>;
-    let live = true;
-    async function load() {
-      try {
-        const a = await getAssessment(id!);
-        if (!live) return;
-        setAssessment(a);
-        if (PENDING.includes(a.status)) timer = setTimeout(load, 3000);
-        else setMarkers(toMarkers(await getBiomarkers(id!)));
-      } catch {
-        if (live) timer = setTimeout(load, 10000); // server down: keep trying quietly
-      }
-    }
-    load();
-    return () => {
-      live = false;
-      clearTimeout(timer);
-    };
-  }, [id]);
-  return { id, assessment, markers, setId };
+  // Read on mount; the upload page replaces home, so a new report remounts it
+  const [id] = useState(latestAssessmentId);
+  const assessment = useAssessment(id);
+  // Markers are saved once reading is done; the meal plan can take minutes more
+  const read = !!assessment?.stage && assessment.stage !== 'extracting';
+  const biomarkers = useCached(id && read ? `biomarkers.${id}` : null, () => getBiomarkers(id!));
+  const markers = biomarkers ? toMarkers(biomarkers) : [];
+  // Today's meals come from the finished plan
+  const done = assessment?.status === 'completed';
+  const plan = useCached(id && done ? `plan.${id}` : null, () => getPlan(id!));
+  // The avatar shows the user's own initial
+  const name = useCached('profile', getProfile)?.name ?? undefined;
+  return { id, assessment, markers, plan, name };
+}
+
+function todaysMeals(plan: Plan, since: string) {
+  const t = planToday(plan.weeks, since);
+  return plan.weeks[t.week].days[t.day];
 }
 
 const shortDate = (iso: string) =>
@@ -114,54 +93,34 @@ export default function Home() {
   const { width } = useWindowDimensions();
   // The dial takes what's left between the two side numbers: smaller on narrow phones
   const dialR = Math.max(60, Math.min(92, Math.floor((width - 80 - 2 * SIDE_W) / 2)));
-  const [remaining, setRemaining] = useState(false);
   const [adding, setAdding] = useState(false);
-  // Urine and InBody wait here until a blood report sends them all together
-  const [held, setHeld] = useState<Partial<Record<ReportKind, DocumentPicker.DocumentPickerAsset>>>({});
-  const [sending, setSending] = useState(false);
-  const { id, assessment, markers, setId } = useLatestReport();
-  const g = assessment?.targets ?? GOALS;
-  const KCAL = { eaten: EATEN.kcal, goal: g.calories_kcal };
-  const MACROS = [
-    { name: 'Protein', eaten: EATEN.protein, goal: g.protein_g },
-    { name: 'Fat', eaten: EATEN.fat, goal: g.fat_g },
-    { name: 'Carbs', eaten: EATEN.carbs, goal: g.carbs_g },
-  ];
+  const { id, assessment, markers, plan, name } = useLatestReport();
+  const t = assessment?.targets;
   const blood = assessment?.reports.find((r) => r.kind === 'blood');
-  const REPORT_DATE = assessment ? shortDate(blood?.report_date ?? assessment.created_at) : 'Sample';
+  const reportDate = assessment ? shortDate(blood?.report_date ?? assessment.created_at) : undefined;
   const status = assessment?.status;
+  const meals = plan && assessment ? todaysMeals(plan, assessment.created_at) : undefined;
+  // What to say where data isn't there yet; the doctor warning always shows
+  const waiting = !id
+    ? 'Add your blood report with the + button to get your daily targets.'
+    : status === 'failed'
+      ? (assessment?.error ?? 'We could not read that report. Try adding it again with the + button.')
+      : status === 'needs_doctor'
+        ? 'Some results need a doctor. Please see one before starting a diet plan.'
+        : 'Working out your targets from your report…';
+  const note =
+    status === 'needs_doctor'
+      ? waiting
+      : markers.length > 0
+        ? ''
+        : !id
+          ? 'Your markers will show here once your report is read.'
+          : status && PENDING.includes(status)
+            ? 'Reading your reports…'
+            : status === 'failed'
+              ? waiting
+              : 'Loading your markers…';
 
-  async function addReport(kind: ReportKind) {
-    setAdding(false);
-    const pick = await DocumentPicker.getDocumentAsync({ type: ['application/pdf', 'image/jpeg', 'image/png'] });
-    if (pick.canceled) return;
-    const file = pick.assets[0];
-    if (kind !== 'blood') {
-      setHeld((h) => ({ ...h, [kind]: file }));
-      return Alert.alert('Report added', 'It will be sent with your blood report. Tap + and choose Blood next.');
-    }
-    Alert.alert(
-      'Analyse your reports?',
-      'Your reports and profile are sent to Aharya to read your results and build your meal plan.',
-      [
-        { text: 'Cancel', style: 'cancel' },
-        {
-          text: 'Agree and send',
-          onPress: async () => {
-            setSending(true);
-            try {
-              setId(await submitAssessment({ ...held, blood: file }));
-              setHeld({});
-            } catch (e) {
-              Alert.alert('Could not send your reports', e instanceof Error ? e.message : String(e));
-            } finally {
-              setSending(false);
-            }
-          },
-        },
-      ],
-    );
-  }
   const tabPad = Math.max(insets.bottom, 10);
   const today = new Date()
     .toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' })
@@ -181,119 +140,90 @@ export default function Home() {
             </Text>
           </View>
           <Press onPress={soon} accessibilityLabel="Profile" style={styles.avatar}>
-            <Text style={styles.avatarText}>A</Text>
+            {name ? (
+              <Text style={styles.avatarText}>{name.trim().charAt(0).toUpperCase()}</Text>
+            ) : (
+              <Glyph icon={User} size={20} color={BLACK} />
+            )}
           </Press>
         </View>
 
         <View style={styles.card}>
           <View style={styles.cardHead}>
-            <Text style={styles.cardTitle}>Daily nutrition</Text>
-            <Text style={styles.cardNote} numberOfLines={1}>
-              {REPORT_DATE} plan
-            </Text>
-          </View>
-
-          <View style={styles.dialRow}>
-            <Side value={KCAL.goal - KCAL.eaten} label="Remaining" />
-            <Dial pct={KCAL.eaten / KCAL.goal} r={dialR}>
-              <Text style={[styles.dialValue, dialR < 80 && styles.dialValueSmall]} numberOfLines={1}>
-                {(remaining ? KCAL.goal - KCAL.eaten : KCAL.eaten).toLocaleString('en-GB')}
+            <Text style={styles.cardTitle}>Daily targets</Text>
+            {!!reportDate && t && (
+              <Text style={styles.cardNote} numberOfLines={1}>
+                From {reportDate} report
               </Text>
-              <Text style={styles.dialLabel}>{remaining ? 'kcal left' : 'kcal eaten'}</Text>
-            </Dial>
-            <Side value={KCAL.goal} label="Target" />
+            )}
           </View>
-
-          <View style={styles.macros}>
-            {MACROS.map((m) => (
-              <View
-                key={m.name}
-                style={styles.macro}
-                accessible
-                accessibilityLabel={`${m.name}: ${m.eaten} of ${m.goal} grams`}>
-                <Text style={styles.macroName}>{m.name}</Text>
-                <View style={styles.macroTrack}>
-                  <View style={[styles.macroFill, { width: `${Math.min(100, (100 * m.eaten) / m.goal)}%` }]} />
-                </View>
-                <Text style={styles.macroValue}>
-                  {remaining ? `${m.goal - m.eaten}g left` : `${m.eaten} / ${m.goal}g`}
-                </Text>
+          {t ? (
+            <>
+              <View style={styles.dialRow}>
+                <Side value={`${t.protein_g}g`} label="Protein" />
+                <Dial pct={1} r={dialR}>
+                  <Text style={[styles.dialValue, dialR < 80 && styles.dialValueSmall]} numberOfLines={1}>
+                    {t.calories_kcal.toLocaleString('en-GB')}
+                  </Text>
+                  <Text style={styles.dialLabel}>kcal a day</Text>
+                </Dial>
+                <Side value={`${t.water_l}L`} label="Water" />
               </View>
-            ))}
-          </View>
-
-          <Segmented options={['Eaten', 'Remaining']} index={remaining ? 1 : 0} onChange={(i) => setRemaining(i === 1)} />
-        </View>
-
-        <Text style={styles.section}>Habits</Text>
-        <View style={styles.pair}>
-          {HABITS.map((h) => (
-            <Press
-              key={h.name}
-              onPress={soon}
-              scale={0.97}
-              accessibilityLabel={`${h.name}: ${h.week} of 7 days this week`}
-              style={[styles.card, styles.habit]}>
-              <Text style={styles.habitName}>{h.name}</Text>
-              <Text style={styles.habitSub}>Last 30 days</Text>
-              <View style={styles.dots}>
-                {[0, 10, 20].map((row) => (
-                  <View key={row} style={styles.dotRow}>
-                    {[...h.days.slice(row, row + 10)].map((d, i) => (
-                      <View key={i} style={[styles.dotCell, d === '1' && styles.dotOn]} />
-                    ))}
+              <View style={styles.macros}>
+                {[
+                  ['Carbs', t.carbs_g],
+                  ['Fat', t.fat_g],
+                  ['Fibre', t.fibre_g],
+                ].map(([k, v]) => (
+                  <View key={k} style={styles.macro} accessible accessibilityLabel={`${k}: ${v} grams a day`}>
+                    <Text style={styles.macroValue}>{v}g</Text>
+                    <Text style={styles.macroName}>{k}</Text>
                   </View>
                 ))}
               </View>
-              <View style={styles.habitFoot}>
-                <Text style={styles.habitWeek}>
-                  {h.week}/7<Text style={styles.habitWeekNote}> this week</Text>
-                </Text>
-                <SymbolView name={sym({ ios: 'chevron.right', android: 'chevron_right' })} size={13} weight="semibold" tintColor={QUIET} />
-              </View>
-            </Press>
-          ))}
+            </>
+          ) : (
+            <Text style={[styles.empty, styles.cardEmpty]}>{waiting}</Text>
+          )}
         </View>
+
+        {meals && (
+          <>
+            <View style={styles.sectionRow}>
+              <Text style={styles.section}>{"Today's meals"}</Text>
+              <Pressable onPress={() => router.push('/plan')} accessibilityRole="button" hitSlop={10}>
+                <Text style={styles.link}>Full plan</Text>
+              </Pressable>
+            </View>
+            <MealCards meals={meals.meals} />
+          </>
+        )}
 
         <View style={styles.sectionRow}>
           <Text style={styles.section}>Your markers</Text>
-          <Pressable onPress={soon} accessibilityRole="button" hitSlop={10}>
-            <Text style={styles.link}>{REPORT_DATE} report</Text>
+          <Pressable onPress={() => router.push(id ? '/plan' : '/upload')} accessibilityRole="button" hitSlop={10}>
+            <Text style={styles.link}>{reportDate ? `${reportDate} report` : 'Add report'}</Text>
           </Pressable>
         </View>
+        {!!note && <Text style={styles.empty}>{note}</Text>}
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           style={styles.bleed}
           contentContainerStyle={styles.markers}>
-          {markers.length === 0 && (
-            <Text style={styles.empty}>
-              {sending
-                ? 'Sending your reports…'
-                : status && PENDING.includes(status)
-                  ? 'Reading your reports. This takes a minute.'
-                  : status === 'needs_doctor'
-                    ? 'Some results need a doctor. Please see one before starting a diet plan.'
-                    : status === 'failed'
-                      ? (assessment?.error ?? 'We could not read that report.')
-                      : id
-                        ? 'Loading your markers…'
-                        : 'Tap + and add your blood report to see your markers here.'}
-            </Text>
-          )}
           {markers.map((m) => {
             const tone = STATUS[m.status];
             return (
               <Press
                 key={m.name}
-                onPress={soon}
+                onPress={() => router.push('/plan')}
                 accessibilityLabel={`${m.name} ${m.value} ${m.unit}, ${m.status}`}
                 style={styles.person}>
                 <View style={[styles.bubble, { borderColor: tone.color, boxShadow: `0 0 14px ${tone.glow}` }]}>
                   <Text style={styles.bubbleValue}>{m.value}</Text>
                   <Text style={styles.bubbleUnit}>{m.unit}</Text>
                 </View>
-                <Text style={styles.personName} numberOfLines={1}>
+                <Text style={styles.personName} numberOfLines={2}>
                   {m.name}
                 </Text>
                 <Text style={[styles.personRole, { color: tone.color }]}>{m.status}</Text>
@@ -306,8 +236,8 @@ export default function Home() {
       <Scrim open={adding} onPress={() => setAdding(false)} />
 
       <View style={[styles.tabBar, { paddingBottom: tabPad }]} accessibilityRole="tablist">
-        <Tab icon={{ ios: 'square.grid.2x2.fill', android: 'dashboard' }} label="Today" on />
-        <Tab icon={{ ios: 'fork.knife', android: 'restaurant' }} label="Food log" />
+        <Tab icon={SquaresFour} label="Today" on />
+        <Tab icon={ForkKnife} label="Food log" />
         <View style={styles.tabCenter}>
           <Press
             onPress={() => setAdding((a) => !a)}
@@ -317,8 +247,8 @@ export default function Home() {
             <PlusIcon open={adding} />
           </Press>
         </View>
-        <Tab icon={{ ios: 'doc.text', android: 'description' }} label="Reports" />
-        <Tab icon={{ ios: 'ellipsis.circle', android: 'more_horiz' }} label="More" />
+        <Tab icon={FileText} label="Reports" />
+        <Tab icon={DotsThreeCircle} label="More" />
       </View>
 
       {/* The three report types fan out of the + (anchored on its centre) */}
@@ -327,12 +257,14 @@ export default function Home() {
           <FanItem
             key={r.name}
             report={r}
-            added={!!held[r.kind]}
             index={i}
             open={adding}
             left={width / 2 - FAN_SIZE / 2}
             bottom={tabPad + 26 - FAN_SIZE / 2}
-            onPress={() => addReport(r.kind)}
+            onPress={() => {
+              setAdding(false);
+              router.push({ pathname: '/upload', params: { kind: r.kind } });
+            }}
           />
         ))}
       </View>
@@ -341,10 +273,10 @@ export default function Home() {
 }
 
 // Fanned in an arc above the +: up-left, straight up, up-right
-const REPORTS: { kind: ReportKind; name: string; icon: Icon; angle: number }[] = [
-  { kind: 'blood', name: 'Blood', icon: { ios: 'drop.fill', android: 'bloodtype' }, angle: 135 },
-  { kind: 'urine', name: 'Urine', icon: { ios: 'flask.fill', android: 'science' }, angle: 90 },
-  { kind: 'inbody', name: 'InBody', icon: { ios: 'figure.stand', android: 'accessibility_new' }, angle: 45 },
+const REPORTS: { kind: string; name: string; icon: Icon; angle: number }[] = [
+  { kind: 'blood', name: 'Blood', icon: Drop, angle: 135 },
+  { kind: 'urine', name: 'Urine', icon: Flask, angle: 90 },
+  { kind: 'inbody', name: 'InBody', icon: PersonSimple, angle: 45 },
 ];
 const FAN_SIZE = 60;
 const FAN_RADIUS = 120;
@@ -354,7 +286,6 @@ const FAN_IN = { duration: 260, dampingRatio: 1 };
 
 function FanItem({
   report,
-  added,
   index,
   open,
   left,
@@ -362,7 +293,6 @@ function FanItem({
   onPress,
 }: {
   report: (typeof REPORTS)[number];
-  added: boolean;
   index: number;
   open: boolean;
   left: number;
@@ -384,10 +314,10 @@ function FanItem({
   }));
   return (
     <Animated.View style={[styles.fanItem, { left, bottom }, style]} pointerEvents={open ? 'box-none' : 'none'}>
-      <Press onPress={onPress} accessibilityLabel={`Upload ${report.name.toLowerCase()} report${added ? ', added' : ''}`} style={styles.fanCircle}>
-        <SymbolView name={sym(report.icon)} size={22} tintColor={BLACK} />
+      <Press onPress={onPress} accessibilityLabel={`Upload ${report.name.toLowerCase()} report`} style={styles.fanCircle}>
+        <Glyph icon={report.icon} size={22} color={BLACK} />
       </Press>
-      <Text style={styles.fanLabel}>{added ? `${report.name} ✓` : report.name}</Text>
+      <Text style={styles.fanLabel}>{report.name}</Text>
     </Animated.View>
   );
 }
@@ -401,7 +331,7 @@ function PlusIcon({ open }: { open: boolean }) {
   const style = useAnimatedStyle(() => ({ transform: [{ rotate: `${r.get()}deg` }] }));
   return (
     <Animated.View style={style}>
-      <SymbolView name={sym({ ios: 'plus', android: 'add' })} size={22} weight="semibold" tintColor={BLACK} />
+      <Glyph icon={Plus} size={22} weight="bold" color={BLACK} />
     </Animated.View>
   );
 }
@@ -420,29 +350,61 @@ function Scrim({ open, onPress }: { open: boolean; onPress: () => void }) {
   );
 }
 
-/** Pressable that dips on touch-down (not release) and springs back, interruptible mid-motion. */
-const APressable = Animated.createAnimatedComponent(Pressable);
-function Press({
-  style,
-  scale = 0.95,
-  ...props
-}: Omit<PressableProps, 'style'> & { style?: StyleProp<ViewStyle>; scale?: number }) {
-  const s = useSharedValue(1);
-  const pressStyle = useAnimatedStyle(() => ({ transform: [{ scale: s.get() }] }));
+/** Today's meals as a row of cards; the one due now is lit and scrolled into view. */
+const MEAL_W = 156;
+const MEAL_GAP = 10;
+function MealCards({ meals }: { meals: { slot: string; name: string; kcal: number; portion: string }[] }) {
+  const now = upNext(meals);
+  const row = useRef<ComponentRef<typeof ScrollView>>(null);
+  const placed = useRef(false);
   return (
-    <APressable
-      accessibilityRole="button"
-      {...props}
-      onPressIn={(e) => {
-        s.set(withSpring(scale, SPRING));
-        props.onPressIn?.(e);
-      }}
-      onPressOut={(e) => {
-        s.set(withSpring(1, SPRING));
-        props.onPressOut?.(e);
-      }}
-      style={[style, pressStyle]}
-    />
+    <ScrollView
+      ref={row}
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      style={styles.bleed}
+      contentContainerStyle={styles.mealRow}
+      snapToInterval={MEAL_W + MEAL_GAP}
+      decelerationRate="fast"
+      // Start once at the meal that's due, keeping the one before it peeking in
+      onContentSizeChange={() => {
+        if (placed.current) return;
+        placed.current = true;
+        row.current?.scrollTo({ x: Math.max(0, now - 0.3) * (MEAL_W + MEAL_GAP), animated: false });
+      }}>
+      {meals.map((m, i) => {
+        const slot = MEAL_SLOTS[m.slot];
+        const lit = i === now;
+        const done = i < now;
+        return (
+          <Press
+            key={`${m.slot}-${i}`}
+            onPress={() => router.push('/plan')}
+            scale={0.97}
+            accessibilityLabel={`${slot?.name ?? m.slot}${lit ? ', up next' : ''}: ${m.name}, ${m.kcal} kcal`}
+            style={[styles.mealCard, lit && styles.mealCardLit, done && styles.mealCardDone]}>
+            <View style={styles.mealCardTop}>
+              <View style={[styles.mealIcon, lit && styles.mealIconLit]}>
+                <Glyph
+                  icon={slot?.icon ?? ForkKnife}
+                  size={16}
+                  color={WHITE}
+                />
+              </View>
+              {lit && <Text style={styles.upNext}>Up next</Text>}
+            </View>
+            <Text style={[styles.mealSlot, lit && styles.litQuiet]}>{slot?.name ?? m.slot}</Text>
+            <Text style={[styles.mealName, lit && styles.litText]} numberOfLines={3}>
+              {m.name}
+            </Text>
+            <Text style={[styles.mealKcal, lit && styles.litText]}>
+              {m.kcal}
+              <Text style={[styles.mealUnit, lit && styles.litQuiet]}> kcal</Text>
+            </Text>
+          </Press>
+        );
+      })}
+    </ScrollView>
   );
 }
 
@@ -479,40 +441,15 @@ function Dial({ pct, r, children }: { pct: number; r: number; children: React.Re
   );
 }
 
-function Side({ value, label }: { value: number; label: string }) {
+function Side({ value, label }: { value: string; label: string }) {
   return (
     <View style={styles.side}>
       <Text style={styles.sideValue} numberOfLines={1} adjustsFontSizeToFit>
-        {value.toLocaleString('en-GB')}
+        {value}
       </Text>
       <Text style={styles.sideLabel} numberOfLines={1} adjustsFontSizeToFit>
         {label}
       </Text>
-    </View>
-  );
-}
-
-/** Two-option switch whose white pill glides to the chosen side. */
-const SEG_W = 116;
-function Segmented({ options, index, onChange }: { options: string[]; index: number; onChange: (i: number) => void }) {
-  const x = useSharedValue(index * SEG_W);
-  const pill = useAnimatedStyle(() => ({ transform: [{ translateX: x.get() }] }));
-  return (
-    <View style={styles.seg} accessibilityRole="tablist">
-      <Animated.View style={[styles.segPill, pill]} />
-      {options.map((o, i) => (
-        <Pressable
-          key={o}
-          onPress={() => {
-            x.set(withSpring(i * SEG_W, SPRING));
-            onChange(i);
-          }}
-          accessibilityRole="tab"
-          accessibilityState={{ selected: i === index }}
-          style={styles.segItem}>
-          <Text style={[styles.segText, i === index && styles.segTextOn]}>{o}</Text>
-        </Pressable>
-      ))}
     </View>
   );
 }
@@ -524,7 +461,8 @@ function Tab({ icon, label, on }: { icon: Icon; label: string; on?: boolean }) {
       accessibilityRole="tab"
       accessibilityState={{ selected: !!on }}
       style={({ pressed }) => [styles.tab, pressed && styles.tabPressed]}>
-      <SymbolView name={sym(icon)} size={21} tintColor={on ? WHITE : QUIET} />
+      {/* Phosphor's convention: the selected tab's icon is filled, the rest are outlines */}
+      <Glyph icon={icon} size={22} weight={on ? 'fill' : 'regular'} color={on ? WHITE : QUIET} />
       <Text style={[styles.tabLabel, on && styles.tabLabelOn]}>{label}</Text>
     </Pressable>
   );
@@ -550,14 +488,7 @@ const styles = StyleSheet.create({
   avatarText: { color: BLACK, fontSize: 18, fontWeight: '600', fontFamily: ROUNDED },
 
   // Cards: lifted a step off the black, hairline rim, continuous corners
-  card: {
-    padding: 20,
-    borderRadius: 28,
-    borderCurve: 'continuous',
-    backgroundColor: '#0E0E0E',
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: RIM,
-  },
+  card,
   cardHead: { flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between' },
   cardTitle: { color: WHITE, fontSize: 19, fontWeight: '600', letterSpacing: -0.3 },
   cardNote: { color: QUIET, fontSize: 13 },
@@ -575,48 +506,41 @@ const styles = StyleSheet.create({
 
   macros: { flexDirection: 'row', gap: 16, marginTop: 10 },
   macro: { flex: 1, alignItems: 'center' },
-  macroName: { color: MUTED, fontSize: 13, fontWeight: '500' },
-  macroTrack: { alignSelf: 'stretch', height: 4, borderRadius: 2, backgroundColor: TRACK, marginTop: 8, overflow: 'hidden' },
-  macroFill: { height: '100%', borderRadius: 2, backgroundColor: WHITE },
-  macroValue: { color: WHITE, fontSize: 13, fontWeight: '500', fontFamily: ROUNDED, marginTop: 8 },
-
-  seg: {
-    flexDirection: 'row',
-    alignSelf: 'center',
-    padding: 4,
-    marginTop: 22,
-    borderRadius: 24,
-    backgroundColor: 'rgba(255,255,255,0.08)',
-  },
-  segPill: { position: 'absolute', top: 4, left: 4, width: SEG_W, height: 40, borderRadius: 20, backgroundColor: WHITE },
-  segItem: { width: SEG_W, height: 40, alignItems: 'center', justifyContent: 'center' },
-  segText: { color: MUTED, fontSize: 14, fontWeight: '600' },
-  segTextOn: { color: BLACK },
+  macroName: { color: QUIET, fontSize: 12, marginTop: 2 },
+  macroValue: { color: WHITE, fontSize: 18, fontWeight: '500', fontFamily: ROUNDED },
 
   section: { color: WHITE, fontSize: 21, fontWeight: '600', letterSpacing: -0.3, marginTop: 32, marginBottom: 14 },
   sectionRow: { flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between' },
   link: { color: MUTED, fontSize: 14 },
 
-  pair: { flexDirection: 'row', gap: 12 },
-  habit: { flex: 1, padding: 16 },
-  habitName: { color: WHITE, fontSize: 16, fontWeight: '600' },
-  habitSub: { color: QUIET, fontSize: 12, marginTop: 2 },
-  // 30 days as 3 rows of 10
-  dots: { gap: 4, marginTop: 14 },
-  dotRow: { flexDirection: 'row', gap: 4 },
-  dotCell: { flex: 1, aspectRatio: 1, borderRadius: 3, backgroundColor: TRACK },
-  dotOn: { backgroundColor: WHITE },
-  habitFoot: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginTop: 14,
-    paddingTop: 12,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: RIM,
+  cardEmpty: { marginTop: 12, marginBottom: 0 },
+  mealRow: { paddingHorizontal: 20, gap: MEAL_GAP },
+  mealCard: {
+    ...card,
+    width: MEAL_W,
+    minHeight: 188,
+    padding: 16,
+    borderRadius: 24,
   },
-  habitWeek: { color: WHITE, fontSize: 16, fontWeight: '600', fontFamily: ROUNDED },
-  habitWeekNote: { color: QUIET, fontSize: 12, fontWeight: '400' },
+  mealCardLit: { backgroundColor: WHITE, borderColor: WHITE },
+  mealCardDone: { opacity: 0.55 },
+  mealCardTop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 },
+  mealIcon: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255,255,255,0.1)',
+  },
+  mealIconLit: { backgroundColor: BLACK },
+  upNext: { color: BLACK, fontSize: 11, fontWeight: '700', letterSpacing: 0.4, textTransform: 'uppercase' },
+  mealSlot: { color: QUIET, fontSize: 11, fontWeight: '700', letterSpacing: 0.6, textTransform: 'uppercase' },
+  mealName: { color: WHITE, fontSize: 15, fontWeight: '600', lineHeight: 20, marginTop: 4, flex: 1 },
+  mealKcal: { color: WHITE, fontSize: 22, fontWeight: '600', fontFamily: ROUNDED, letterSpacing: -0.4, marginTop: 10 },
+  mealUnit: { color: QUIET, fontSize: 12, fontWeight: '500', letterSpacing: 0 },
+  litText: { color: BLACK },
+  litQuiet: { color: 'rgba(0,0,0,0.5)' },
 
   bleed: { marginHorizontal: -20 },
   markers: { paddingHorizontal: 20, gap: 6 },
@@ -632,9 +556,9 @@ const styles = StyleSheet.create({
   },
   bubbleValue: { color: WHITE, fontSize: 18, fontWeight: '500', fontFamily: ROUNDED, letterSpacing: -0.3 },
   bubbleUnit: { color: QUIET, fontSize: 9, fontWeight: '600', marginTop: -1 },
-  personName: { color: WHITE, fontSize: 13, fontWeight: '500', marginTop: 10 },
+  personName: { color: WHITE, fontSize: 13, fontWeight: '500', marginTop: 10, textAlign: 'center' },
   personRole: { fontSize: 12, fontWeight: '600', marginTop: 2 },
-  empty: { color: MUTED, fontSize: 14, lineHeight: 20, maxWidth: 300 },
+  empty: { color: MUTED, fontSize: 14, lineHeight: 20, marginBottom: 14 },
 
   scrim: { backgroundColor: 'rgba(0,0,0,0.72)' },
   // Width wider than the circle so the label fits; centred on the + by the left/bottom passed in

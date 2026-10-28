@@ -1,10 +1,11 @@
-import { router, useFocusEffect } from 'expo-router';
+import { Redirect, router, useFocusEffect } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useCallback, useEffect, useState } from 'react';
 import { Animated, Easing, Pressable, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { gradient, light } from '@/components/auth';
+import { supabase } from '@/lib/supabase';
 
 const AnimatedSafeArea = Animated.createAnimatedComponent(SafeAreaView);
 
@@ -25,8 +26,22 @@ const GLOW = gradient(
   ].join(', '),
 );
 
+/** Already signed in (the session is saved on the phone): skip the intro and go straight home. */
+export default function Start() {
+  const [signedIn, setSignedIn] = useState<boolean>();
+  useEffect(() => {
+    supabase.auth
+      .getSession()
+      .then(({ data }) => setSignedIn(!!data.session))
+      .catch(() => setSignedIn(false));
+  }, []);
+  // A black frame for the moment it takes to read the saved session, so the intro never flashes
+  if (signedIn === undefined) return <View style={{ flex: 1, backgroundColor: '#000' }} />;
+  return signedIn ? <Redirect href="/home" /> : <Welcome />;
+}
+
 // Intro is always black (like a splash), regardless of light/dark mode
-export default function Welcome() {
+function Welcome() {
   const [line, setLine] = useState(0);
   const [h, setH] = useState(800);
   // pos follows the newest line: it rises in and the glow brightens with it

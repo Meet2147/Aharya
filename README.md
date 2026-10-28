@@ -49,9 +49,9 @@ Two modes:
 | `GET` | `/v1/assessments/{id}/plan` | Meal plan and grocery list |
 | `DELETE` | `/v1/assessments/{id}` | Delete the assessment and its files |
 
-Required form fields: `name`, `age`, `gender`, `alcohol`, `smoker`, `email`, `phone`,
+Required form fields: `name`, `age`, `gender`, `alcohol`, `smoker`, `phone`,
 `consent`, `blood_report`.
-Optional: `urine_report`, `inbody_report`, `diet_type` (veg, eggetarian, non_veg, jain, vegan),
+Optional: `email`, `urine_report`, `inbody_report`, `diet_type` (veg, eggetarian, non_veg, jain, vegan),
 `cuisine` (north, south, west, east), `activity_level`, `allergies`, `conditions`,
 `medications`, `height_cm`, `weight_kg`, `waist_cm`, `weeks` (1 to 4).
 
