@@ -1,0 +1,831 @@
+{
+ "assessment": {
+  "assessment_id": "sample",
+  "status": "completed",
+  "stage": "done",
+  "error": null,
+  "warnings": [],
+  "findings": [
+   {
+    "code": "anaemia",
+    "severity": "attention",
+    "title": "Low haemoglobin",
+    "message": "Haemoglobin is 11.6 g/dL, below 12.",
+    "diet_actions": [
+     "Include iron-rich foods daily: leafy greens, rajma, chana, jaggery, dates",
+     "Pair iron-rich meals with vitamin C (lemon, amla, guava)",
+     "Avoid tea and coffee within an hour of meals"
+    ]
+   },
+   {
+    "code": "prediabetes",
+    "severity": "attention",
+    "title": "Blood sugar in the pre-diabetic range",
+    "message": "Fasting sugar or HbA1c is above normal but below the diabetic range.",
+    "diet_actions": [
+     "Cut sugar, sweets and sweetened drinks",
+     "Replace white rice and maida with millets and whole grains",
+     "Add protein and fibre to every meal"
+    ]
+   },
+   {
+    "code": "dyslipidaemia",
+    "severity": "attention",
+    "title": "Cholesterol needs attention",
+    "message": "Lipid profile shows LDL 148.0, triglycerides 210.0, low HDL 38.0.",
+    "diet_actions": [
+     "Limit fried food, ghee, butter, cream, bakery items and red meat",
+     "Use mustard, groundnut or rice bran oil, at most 3 teaspoons a day",
+     "Add soluble fibre daily: oats, isabgol, methi seeds, beans",
+     "Add a small handful of nuts or flaxseed daily"
+    ]
+   },
+   {
+    "code": "obesity",
+    "severity": "attention",
+    "title": "BMI in the obese range for Indians",
+    "message": "BMI is 26.6. For Indians, 25 and above is classed as obese.",
+    "diet_actions": [
+     "Calorie deficit of about 500 kcal a day",
+     "Fill half the plate with vegetables"
+    ]
+   },
+   {
+    "code": "central_obesity",
+    "severity": "attention",
+    "title": "Fat around the belly",
+    "message": "Belly fat is high (waist 86.0 cm), which raises diabetes and heart risk.",
+    "diet_actions": [
+     "Cut sugar, refined flour, fried snacks and alcohol",
+     "Have an early, light dinner",
+     "Walk 10 minutes after each main meal"
+    ]
+   },
+   {
+    "code": "alcohol",
+    "severity": "info",
+    "title": "Alcohol",
+    "message": "Alcohol adds calories that go straight to the belly and strains the liver.",
+    "diet_actions": [
+     "Limit alcohol; avoid beer and sugary mixers"
+    ]
+   }
+  ],
+  "recommended_tests": [
+   {
+    "panel": "liver",
+    "test": "Liver function test (SGPT/SGOT)",
+    "why": "screens for fatty liver"
+   },
+   {
+    "panel": "thyroid",
+    "test": "TSH",
+    "why": "thyroid problems change weight and energy needs"
+   },
+   {
+    "panel": "vitamin_d",
+    "test": "Vitamin D",
+    "why": "deficiency is very common in India"
+   },
+   {
+    "panel": "vitamin_b12",
+    "test": "Vitamin B12",
+    "why": "deficiency is common, especially in vegetarians"
+   }
+  ],
+  "body_composition": {
+   "height_cm": 160.0,
+   "weight_kg": 68.0,
+   "waist_cm": 86.0,
+   "bmi": 26.6
+  },
+  "targets": {
+   "goal": "fat_loss",
+   "bmr_kcal": 1384,
+   "bmr_source": "Mifflin-St Jeor equation",
+   "tdee_kcal": 1661,
+   "calories_kcal": 1200,
+   "protein_g": 71,
+   "carbs_g": 148,
+   "fat_g": 36,
+   "fibre_g": 35,
+   "sodium_mg_max": 2000,
+   "water_l": 3.0,
+   "notes": []
+  },
+  "reports": [
+   {
+    "kind": "blood",
+    "filename": "blood.pdf",
+    "lab_name": "Test Pathology",
+    "report_date": "2026-10-01"
+   }
+  ],
+  "created_at": "2026-11-09T09:00:00Z"
+ },
+ "plan": {
+  "assessment_id": "sample",
+  "targets": {
+   "goal": "fat_loss",
+   "bmr_kcal": 1384,
+   "bmr_source": "Mifflin-St Jeor equation",
+   "tdee_kcal": 1661,
+   "calories_kcal": 1200,
+   "protein_g": 71,
+   "carbs_g": 148,
+   "fat_g": 36,
+   "fibre_g": 35,
+   "sodium_mg_max": 2000,
+   "water_l": 3.0,
+   "notes": []
+  },
+  "generator": "catalogue",
+  "weeks": [
+   {
+    "week": 1,
+    "days": [
+     {
+      "day": 1,
+      "meals": [
+       {
+        "slot": "breakfast",
+        "name": "Sprouted moong salad with a fruit",
+        "portion": "1 large bowl sprouts + 1 fruit (about 0.8x this serving)",
+        "kcal": 235,
+        "protein_g": 13
+       },
+       {
+        "slot": "mid_morning",
+        "name": "Buttermilk with roasted chana",
+        "portion": "1 glass chaas + 1 handful chana (about 0.8x this serving)",
+        "kcal": 125,
+        "protein_g": 7
+       },
+       {
+        "slot": "lunch",
+        "name": "Foxtail millet pulao with soya chunks and raita",
+        "portion": "1.5 cups pulao + 1 bowl raita (about 0.8x this serving)",
+        "kcal": 400,
+        "protein_g": 21
+       },
+       {
+        "slot": "evening_snack",
+        "name": "Masala buttermilk with khakhra",
+        "portion": "1 glass chaas + 2 khakhras (about 0.8x this serving)",
+        "kcal": 125,
+        "protein_g": 5
+       },
+       {
+        "slot": "dinner",
+        "name": "Moong dal soup with tofu stir-fry and phulka",
+        "portion": "1 bowl soup + 1 bowl stir-fry + 1 phulka (about 0.8x this serving)",
+        "kcal": 314,
+        "protein_g": 20
+       }
+      ],
+      "total_kcal": 1199,
+      "total_protein_g": 66
+     },
+     {
+      "day": 2,
+      "meals": [
+       {
+        "slot": "breakfast",
+        "name": "Methi thepla with curd",
+        "portion": "2 theplas + 1 small bowl curd (about 0.7x this serving)",
+        "kcal": 271,
+        "protein_g": 9
+       },
+       {
+        "slot": "mid_morning",
+        "name": "Coconut water with peanuts",
+        "portion": "1 glass + 1 small handful (about 0.7x this serving)",
+        "kcal": 124,
+        "protein_g": 4
+       },
+       {
+        "slot": "lunch",
+        "name": "Phulka with tofu-matar curry and salad",
+        "portion": "2 phulkas + 1 bowl curry (about 0.7x this serving)",
+        "kcal": 366,
+        "protein_g": 18
+       },
+       {
+        "slot": "evening_snack",
+        "name": "Boiled peanut chaat",
+        "portion": "1 small bowl (about 0.7x this serving)",
+        "kcal": 124,
+        "protein_g": 6
+       },
+       {
+        "slot": "dinner",
+        "name": "Phulka with mixed vegetable sabzi, moong dal and salad",
+        "portion": "2 phulkas + 1 bowl each (about 0.7x this serving)",
+        "kcal": 315,
+        "protein_g": 13
+       }
+      ],
+      "total_kcal": 1200,
+      "total_protein_g": 50
+     },
+     {
+      "day": 3,
+      "meals": [
+       {
+        "slot": "breakfast",
+        "name": "Vegetable oats upma with curd",
+        "portion": "1.5 cups upma + 1 small bowl curd (about 0.7x this serving)",
+        "kcal": 258,
+        "protein_g": 10
+       },
+       {
+        "slot": "mid_morning",
+        "name": "Papaya bowl with pumpkin seeds",
+        "portion": "1 bowl papaya + 1 tbsp seeds (about 0.7x this serving)",
+        "kcal": 103,
+        "protein_g": 4
+       },
+       {
+        "slot": "lunch",
+        "name": "Brown rice with rajma, cucumber raita and salad",
+        "portion": "1 cup rice + 1 bowl rajma (about 0.7x this serving)",
+        "kcal": 398,
+        "protein_g": 15
+       },
+       {
+        "slot": "evening_snack",
+        "name": "Paneer tikka",
+        "portion": "6 cubes (about 0.7x this serving)",
+        "kcal": 133,
+        "protein_g": 9
+       },
+       {
+        "slot": "dinner",
+        "name": "Ragi roti with dal palak and salad",
+        "portion": "2 rotis + 1 bowl dal palak (about 0.7x this serving)",
+        "kcal": 309,
+        "protein_g": 13
+       }
+      ],
+      "total_kcal": 1201,
+      "total_protein_g": 51
+     },
+     {
+      "day": 4,
+      "meals": [
+       {
+        "slot": "breakfast",
+        "name": "Masala omelette with multigrain toast",
+        "portion": "2-egg omelette + 2 slices toast (about 0.7x this serving)",
+        "kcal": 281,
+        "protein_g": 16
+       },
+       {
+        "slot": "mid_morning",
+        "name": "Boiled eggs",
+        "portion": "1 whole egg + 2 egg whites (about 0.7x this serving)",
+        "kcal": 96,
+        "protein_g": 10
+       },
+       {
+        "slot": "lunch",
+        "name": "Phulka with palak paneer and salad",
+        "portion": "2 phulkas + 1 bowl palak paneer (about 0.7x this serving)",
+        "kcal": 393,
+        "protein_g": 19
+       },
+       {
+        "slot": "evening_snack",
+        "name": "Sprouts chaat",
+        "portion": "1 bowl (about 0.7x this serving)",
+        "kcal": 111,
+        "protein_g": 7
+       },
+       {
+        "slot": "dinner",
+        "name": "Bajra roti with lauki-chana dal and kachumber",
+        "portion": "2 rotis + 1 bowl dal (about 0.7x this serving)",
+        "kcal": 319,
+        "protein_g": 13
+       }
+      ],
+      "total_kcal": 1200,
+      "total_protein_g": 65
+     },
+     {
+      "day": 5,
+      "meals": [
+       {
+        "slot": "breakfast",
+        "name": "Tofu bhurji with jowar roti",
+        "portion": "1 bowl bhurji + 1 roti (about 0.8x this serving)",
+        "kcal": 268,
+        "protein_g": 17
+       },
+       {
+        "slot": "mid_morning",
+        "name": "Guava or apple with almonds",
+        "portion": "1 fruit + 5 almonds (about 0.8x this serving)",
+        "kcal": 115,
+        "protein_g": 2
+       },
+       {
+        "slot": "lunch",
+        "name": "Phulka with chole, salad and chaas",
+        "portion": "2 phulkas + 1 bowl chole (about 0.8x this serving)",
+        "kcal": 413,
+        "protein_g": 16
+       },
+       {
+        "slot": "evening_snack",
+        "name": "Roasted makhana with green tea",
+        "portion": "1 bowl makhana (about 0.8x this serving)",
+        "kcal": 99,
+        "protein_g": 3
+       },
+       {
+        "slot": "dinner",
+        "name": "Vegetable dalia khichdi with curd",
+        "portion": "1.5 cups + 1 small bowl curd (about 0.8x this serving)",
+        "kcal": 306,
+        "protein_g": 11
+       }
+      ],
+      "total_kcal": 1201,
+      "total_protein_g": 49
+     },
+     {
+      "day": 6,
+      "meals": [
+       {
+        "slot": "breakfast",
+        "name": "Moong dal chilla with mint chutney and curd",
+        "portion": "2 chillas + 1 small bowl curd (about 0.7x this serving)",
+        "kcal": 271,
+        "protein_g": 16
+       },
+       {
+        "slot": "mid_morning",
+        "name": "Buttermilk with roasted chana",
+        "portion": "1 glass chaas + 1 handful chana (about 0.7x this serving)",
+        "kcal": 114,
+        "protein_g": 6
+       },
+       {
+        "slot": "lunch",
+        "name": "Phulka, dal tadka, lauki sabzi, salad and curd",
+        "portion": "2 phulkas + 1 bowl each (about 0.7x this serving)",
+        "kcal": 371,
+        "protein_g": 16
+       },
+       {
+        "slot": "evening_snack",
+        "name": "Roasted chana with a fruit",
+        "portion": "1 handful chana + 1 fruit (about 0.7x this serving)",
+        "kcal": 121,
+        "protein_g": 6
+       },
+       {
+        "slot": "dinner",
+        "name": "Egg curry with phulka and salad",
+        "portion": "2 eggs + 2 phulkas (about 0.7x this serving)",
+        "kcal": 321,
+        "protein_g": 16
+       }
+      ],
+      "total_kcal": 1198,
+      "total_protein_g": 60
+     },
+     {
+      "day": 7,
+      "meals": [
+       {
+        "slot": "breakfast",
+        "name": "Idli with sambar",
+        "portion": "3 idlis + 1 bowl sambar (about 0.8x this serving)",
+        "kcal": 252,
+        "protein_g": 9
+       },
+       {
+        "slot": "mid_morning",
+        "name": "Coconut water with peanuts",
+        "portion": "1 glass + 1 small handful (about 0.8x this serving)",
+        "kcal": 130,
+        "protein_g": 5
+       },
+       {
+        "slot": "lunch",
+        "name": "Brown rice, sambar, beans poriyal and curd",
+        "portion": "1 cup rice + 1 bowl each (about 0.8x this serving)",
+        "kcal": 390,
+        "protein_g": 13
+       },
+       {
+        "slot": "evening_snack",
+        "name": "Masala buttermilk with khakhra",
+        "portion": "1 glass chaas + 2 khakhras (about 0.8x this serving)",
+        "kcal": 122,
+        "protein_g": 5
+       },
+       {
+        "slot": "dinner",
+        "name": "Moong dal soup with tofu stir-fry and phulka",
+        "portion": "1 bowl soup + 1 bowl stir-fry + 1 phulka (about 0.8x this serving)",
+        "kcal": 306,
+        "protein_g": 20
+       }
+      ],
+      "total_kcal": 1200,
+      "total_protein_g": 52
+     }
+    ],
+    "grocery": [
+     {
+      "name": "curd",
+      "quantity": 1050.0,
+      "unit": "g",
+      "category": "dairy"
+     },
+     {
+      "name": "paneer",
+      "quantity": 150.0,
+      "unit": "g",
+      "category": "dairy"
+     },
+     {
+      "name": "papaya",
+      "quantity": 150.0,
+      "unit": "g",
+      "category": "fruits"
+     },
+     {
+      "name": "seasonal fruit",
+      "quantity": 3.0,
+      "unit": "pieces",
+      "category": "fruits"
+     },
+     {
+      "name": "tender coconut",
+      "quantity": 2.0,
+      "unit": "pieces",
+      "category": "fruits"
+     },
+     {
+      "name": "bajra flour",
+      "quantity": 50.0,
+      "unit": "g",
+      "category": "grains"
+     },
+     {
+      "name": "brown rice",
+      "quantity": 100.0,
+      "unit": "g",
+      "category": "grains"
+     },
+     {
+      "name": "dalia",
+      "quantity": 50.0,
+      "unit": "g",
+      "category": "grains"
+     },
+     {
+      "name": "foxtail millet",
+      "quantity": 50.0,
+      "unit": "g",
+      "category": "grains"
+     },
+     {
+      "name": "idli batter",
+      "quantity": 150.0,
+      "unit": "g",
+      "category": "grains"
+     },
+     {
+      "name": "jowar flour",
+      "quantity": 50.0,
+      "unit": "g",
+      "category": "grains"
+     },
+     {
+      "name": "multigrain bread",
+      "quantity": 2.0,
+      "unit": "slices",
+      "category": "grains"
+     },
+     {
+      "name": "ragi flour",
+      "quantity": 50.0,
+      "unit": "g",
+      "category": "grains"
+     },
+     {
+      "name": "rolled oats",
+      "quantity": 50.0,
+      "unit": "g",
+      "category": "grains"
+     },
+     {
+      "name": "whole wheat flour",
+      "quantity": 400.0,
+      "unit": "g",
+      "category": "grains"
+     },
+     {
+      "name": "whole wheat khakhra",
+      "quantity": 4.0,
+      "unit": "pieces",
+      "category": "grains"
+     },
+     {
+      "name": "almonds",
+      "quantity": 50.0,
+      "unit": "g",
+      "category": "nuts_seeds"
+     },
+     {
+      "name": "makhana",
+      "quantity": 50.0,
+      "unit": "g",
+      "category": "nuts_seeds"
+     },
+     {
+      "name": "peanuts",
+      "quantity": 100.0,
+      "unit": "g",
+      "category": "nuts_seeds"
+     },
+     {
+      "name": "pumpkin seeds",
+      "quantity": 50.0,
+      "unit": "g",
+      "category": "nuts_seeds"
+     },
+     {
+      "name": "green tea",
+      "quantity": 1.0,
+      "unit": "bags",
+      "category": "pantry"
+     },
+     {
+      "name": "eggs",
+      "quantity": 6.0,
+      "unit": "pieces",
+      "category": "protein"
+     },
+     {
+      "name": "soya chunks",
+      "quantity": 50.0,
+      "unit": "g",
+      "category": "protein"
+     },
+     {
+      "name": "tofu",
+      "quantity": 400.0,
+      "unit": "g",
+      "category": "protein"
+     },
+     {
+      "name": "chana dal",
+      "quantity": 50.0,
+      "unit": "g",
+      "category": "pulses"
+     },
+     {
+      "name": "kabuli chana",
+      "quantity": 50.0,
+      "unit": "g",
+      "category": "pulses"
+     },
+     {
+      "name": "moong dal",
+      "quantity": 200.0,
+      "unit": "g",
+      "category": "pulses"
+     },
+     {
+      "name": "moong sprouts",
+      "quantity": 200.0,
+      "unit": "g",
+      "category": "pulses"
+     },
+     {
+      "name": "rajma",
+      "quantity": 50.0,
+      "unit": "g",
+      "category": "pulses"
+     },
+     {
+      "name": "roasted chana",
+      "quantity": 100.0,
+      "unit": "g",
+      "category": "pulses"
+     },
+     {
+      "name": "toor dal",
+      "quantity": 100.0,
+      "unit": "g",
+      "category": "pulses"
+     },
+     {
+      "name": "capsicum",
+      "quantity": 100.0,
+      "unit": "g",
+      "category": "vegetables"
+     },
+     {
+      "name": "cucumber",
+      "quantity": 200.0,
+      "unit": "g",
+      "category": "vegetables"
+     },
+     {
+      "name": "french beans",
+      "quantity": 100.0,
+      "unit": "g",
+      "category": "vegetables"
+     },
+     {
+      "name": "fresh methi",
+      "quantity": 50.0,
+      "unit": "g",
+      "category": "vegetables"
+     },
+     {
+      "name": "green peas",
+      "quantity": 50.0,
+      "unit": "g",
+      "category": "vegetables"
+     },
+     {
+      "name": "lauki",
+      "quantity": 250.0,
+      "unit": "g",
+      "category": "vegetables"
+     },
+     {
+      "name": "lemon",
+      "quantity": 2.0,
+      "unit": "pieces",
+      "category": "vegetables"
+     },
+     {
+      "name": "mint and coriander",
+      "quantity": 50.0,
+      "unit": "g",
+      "category": "vegetables"
+     },
+     {
+      "name": "mixed sambar vegetables",
+      "quantity": 200.0,
+      "unit": "g",
+      "category": "vegetables"
+     },
+     {
+      "name": "mixed vegetables",
+      "quantity": 650.0,
+      "unit": "g",
+      "category": "vegetables"
+     },
+     {
+      "name": "onion",
+      "quantity": 100.0,
+      "unit": "g",
+      "category": "vegetables"
+     },
+     {
+      "name": "salad vegetables",
+      "quantity": 600.0,
+      "unit": "g",
+      "category": "vegetables"
+     },
+     {
+      "name": "spinach",
+      "quantity": 300.0,
+      "unit": "g",
+      "category": "vegetables"
+     },
+     {
+      "name": "tomato",
+      "quantity": 450.0,
+      "unit": "g",
+      "category": "vegetables"
+     }
+    ]
+   }
+  ],
+  "guidance": [
+   "Include iron-rich foods daily: leafy greens, rajma, chana, jaggery, dates",
+   "Pair iron-rich meals with vitamin C (lemon, amla, guava)",
+   "Avoid tea and coffee within an hour of meals",
+   "Cut sugar, sweets and sweetened drinks",
+   "Replace white rice and maida with millets and whole grains",
+   "Add protein and fibre to every meal",
+   "Limit fried food, ghee, butter, cream, bakery items and red meat",
+   "Use mustard, groundnut or rice bran oil, at most 3 teaspoons a day",
+   "Add soluble fibre daily: oats, isabgol, methi seeds, beans",
+   "Add a small handful of nuts or flaxseed daily",
+   "Calorie deficit of about 500 kcal a day",
+   "Fill half the plate with vegetables",
+   "Cut sugar, refined flour, fried snacks and alcohol",
+   "Have an early, light dinner",
+   "Walk 10 minutes after each main meal",
+   "Limit alcohol; avoid beer and sugary mixers",
+   "Drink about 3 litres of water a day",
+   "Use at most 3 teaspoons of oil and 1 teaspoon of salt a day in total"
+  ],
+  "warnings": [
+   "The plan averages 56 g protein a day against a target of 71 g. Add a protein serving such as curd, paneer, dal, tofu or eggs."
+  ],
+  "disclaimer": "Aharya gives general nutrition guidance based on your reports. It is not a medical diagnosis or treatment. Speak to a doctor before changing your diet if you have a medical condition or take medication."
+ },
+ "biomarkers": [
+  {
+   "source": "blood",
+   "code": "wbc",
+   "name": "WBC count",
+   "value": 7200.0,
+   "value_text": "7200",
+   "unit": "/cumm",
+   "ref_low": 4000.0,
+   "ref_high": 11000.0,
+   "flag": "normal"
+  },
+  {
+   "source": "blood",
+   "code": "platelets",
+   "name": "Platelet count",
+   "value": 240000.0,
+   "value_text": "2.4",
+   "unit": "lakhs/cumm",
+   "ref_low": 150000.0,
+   "ref_high": 450000.0,
+   "flag": "normal"
+  },
+  {
+   "source": "blood",
+   "code": "fbs",
+   "name": "Fasting blood sugar",
+   "value": 112.0,
+   "value_text": "112",
+   "unit": "mg/dL",
+   "ref_low": 70.0,
+   "ref_high": 100.0,
+   "flag": "high"
+  },
+  {
+   "source": "blood",
+   "code": "ldl",
+   "name": "LDL cholesterol",
+   "value": 148.0,
+   "value_text": "148",
+   "unit": "mg/dL",
+   "ref_low": null,
+   "ref_high": 100.0,
+   "flag": "high"
+  },
+  {
+   "source": "blood",
+   "code": "hdl",
+   "name": "HDL cholesterol",
+   "value": 38.0,
+   "value_text": "38",
+   "unit": "mg/dL",
+   "ref_low": 40.0,
+   "ref_high": null,
+   "flag": "low"
+  },
+  {
+   "source": "blood",
+   "code": "tg",
+   "name": "Triglycerides",
+   "value": 210.0,
+   "value_text": "210",
+   "unit": "mg/dL",
+   "ref_low": null,
+   "ref_high": 150.0,
+   "flag": "high"
+  },
+  {
+   "source": "blood",
+   "code": "creatinine",
+   "name": "Creatinine",
+   "value": 0.9,
+   "value_text": "0.9",
+   "unit": "mg/dL",
+   "ref_low": 0.7,
+   "ref_high": 1.3,
+   "flag": "normal"
+  },
+  {
+   "source": "blood",
+   "code": "hb",
+   "name": "Haemoglobin",
+   "value": 11.6,
+   "value_text": "11.6",
+   "unit": "g/dL",
+   "ref_low": 12.0,
+   "ref_high": 15.0,
+   "flag": "low"
+  }
+ ]
+}

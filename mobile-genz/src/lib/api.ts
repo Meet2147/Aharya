@@ -1,7 +1,7 @@
 import type { DocumentPickerAsset } from 'expo-document-picker';
 import { File } from 'expo-file-system';
 
-import sample from '@/data/sample.json';
+import sample from '@/fixtures/sample.json';
 import { getProfile, read, write } from '@/lib/store';
 
 // Set EXPO_PUBLIC_API_URL=http://<your-mac-ip>:8000 to use a local server instead
