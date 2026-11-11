@@ -1,0 +1,471 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00491B637ACBF479E78FEE85 /* BricolageGrotesque_800ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06B2ACEE0AC17F310FFBD5AC /* BricolageGrotesque_800ExtraBold.ttf */; };
+		1A5995F1752A67660F208B89 /* ReportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C677B95B5D800849F48BA5A0 /* ReportsView.swift */; };
+		2D130619CD816767826CCD2A /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746CAC94469B3B8F56157986 /* Models.swift */; };
+		391F727C9E6810AC7ED6999E /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D888AF0613185CFF92DF43 /* WeekView.swift */; };
+		3E8C9092E6516F58AB0E5DBC /* Shops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7BD3F089858E445D8E72C /* Shops.swift */; };
+		3F529AF54C7BF7B890F9FE48 /* CartRunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022220763DB53D0A814D8AB6 /* CartRunView.swift */; };
+		664B93072FA7FA0340DD1E73 /* KitchenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13635B93BB66FE574BC8BA7D /* KitchenView.swift */; };
+		6F7C8036AA542B2CF1CA32B8 /* BricolageGrotesque_600SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 155AEA154D299E7E14D2430D /* BricolageGrotesque_600SemiBold.ttf */; };
+		718F42C591F56A82EF955EBD /* YouView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2978A2823100C56472AF736A /* YouView.swift */; };
+		76B3DF7E4365CFFD0382B147 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44508FF4046704B3490459 /* RecipeDetailView.swift */; };
+		83BAC8B77B4B339E0D961FB3 /* HaulView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77830917856CEDA406B1502D /* HaulView.swift */; };
+		9350C9BEE187572C4E72B87A /* catalog.json in Resources */ = {isa = PBXBuildFile; fileRef = EE73CB8D7CF04765A5F49AFC /* catalog.json */; };
+		A3146E20A9D9E9370DA3D894 /* BricolageGrotesque_400Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D14B2ADD60571082C0044172 /* BricolageGrotesque_400Regular.ttf */; };
+		A4467FB4FC0885DCA130C900 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBE22B10AD411795CCA1BEA /* Theme.swift */; };
+		B4CD382F50A32EFC423800CF /* Planner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C08A574487B6C9C1F4FD08 /* Planner.swift */; };
+		C39F184FBDC75C327E77B7B9 /* AharyaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EBD611F3D80211662DF42A /* AharyaApp.swift */; };
+		D08C5D83030032D52D7C2CB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15310348AF1C20D8AAFB00AF /* Assets.xcassets */; };
+		D5DC3A1B5D396E226C1E65CF /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CDDAAF5C791DAF5BA3D063 /* OnboardingView.swift */; };
+		E4FEC3853F3A2104DB71FD5E /* ReportsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A1C59B81565DCFBE464B8C /* ReportsAPI.swift */; };
+		FB961A7A5178AD4F14A5ACBF /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC35C9474097BAF1BDB6FCAD /* AppModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		022220763DB53D0A814D8AB6 /* CartRunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRunView.swift; sourceTree = "<group>"; };
+		0560C85A3D73FAB7A8753EAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		06B2ACEE0AC17F310FFBD5AC /* BricolageGrotesque_800ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BricolageGrotesque_800ExtraBold.ttf; sourceTree = "<group>"; };
+		12CDDAAF5C791DAF5BA3D063 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		13635B93BB66FE574BC8BA7D /* KitchenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitchenView.swift; sourceTree = "<group>"; };
+		15310348AF1C20D8AAFB00AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		155AEA154D299E7E14D2430D /* BricolageGrotesque_600SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BricolageGrotesque_600SemiBold.ttf; sourceTree = "<group>"; };
+		2978A2823100C56472AF736A /* YouView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouView.swift; sourceTree = "<group>"; };
+		4BBE22B10AD411795CCA1BEA /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		57EBD611F3D80211662DF42A /* AharyaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AharyaApp.swift; sourceTree = "<group>"; };
+		71D888AF0613185CFF92DF43 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
+		746CAC94469B3B8F56157986 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		77830917856CEDA406B1502D /* HaulView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaulView.swift; sourceTree = "<group>"; };
+		9AC7BD3F089858E445D8E72C /* Shops.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shops.swift; sourceTree = "<group>"; };
+		AB2595C35D2220BEA452FEE0 /* Aharya.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Aharya.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9C08A574487B6C9C1F4FD08 /* Planner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planner.swift; sourceTree = "<group>"; };
+		C677B95B5D800849F48BA5A0 /* ReportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsView.swift; sourceTree = "<group>"; };
+		CC35C9474097BAF1BDB6FCAD /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		CD44508FF4046704B3490459 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
+		D14B2ADD60571082C0044172 /* BricolageGrotesque_400Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BricolageGrotesque_400Regular.ttf; sourceTree = "<group>"; };
+		E2A1C59B81565DCFBE464B8C /* ReportsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsAPI.swift; sourceTree = "<group>"; };
+		EE73CB8D7CF04765A5F49AFC /* catalog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = catalog.json; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2FFA9B7F59F1A6742E75678C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				33C9C77D2F81FC75EA87A264 /* Haul */,
+				8F082CF9DE4F75BF90FB4CDE /* Kitchen */,
+				645A8147B22D83B76F1D2C16 /* Onboarding */,
+				E57BF50DBEFE934D829F6A43 /* Week */,
+				91652933BB9D80EB4C3305B9 /* You */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		32344CFE030FFEED3C56698B /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				4BBE22B10AD411795CCA1BEA /* Theme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		33C9C77D2F81FC75EA87A264 /* Haul */ = {
+			isa = PBXGroup;
+			children = (
+				022220763DB53D0A814D8AB6 /* CartRunView.swift */,
+				77830917856CEDA406B1502D /* HaulView.swift */,
+			);
+			path = Haul;
+			sourceTree = "<group>";
+		};
+		43AFCDE2A972D9F58DDD8DBD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				15310348AF1C20D8AAFB00AF /* Assets.xcassets */,
+				EE73CB8D7CF04765A5F49AFC /* catalog.json */,
+				E63F639E45A188F35B8E6241 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		645A8147B22D83B76F1D2C16 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				12CDDAAF5C791DAF5BA3D063 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		76B219F520C7BD927DB429F5 = {
+			isa = PBXGroup;
+			children = (
+				7CDA91AC5842410342B36BF2 /* Aharya */,
+				8BEF1A51AA16090EF2A09DAB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7CDA91AC5842410342B36BF2 /* Aharya */ = {
+			isa = PBXGroup;
+			children = (
+				0560C85A3D73FAB7A8753EAD /* Info.plist */,
+				F9AD60E58372C786B367CAE4 /* App */,
+				CA6BDB49B17F70076F32019C /* Model */,
+				43AFCDE2A972D9F58DDD8DBD /* Resources */,
+				32344CFE030FFEED3C56698B /* Theme */,
+				2FFA9B7F59F1A6742E75678C /* Views */,
+			);
+			path = Aharya;
+			sourceTree = "<group>";
+		};
+		8BEF1A51AA16090EF2A09DAB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB2595C35D2220BEA452FEE0 /* Aharya.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8F082CF9DE4F75BF90FB4CDE /* Kitchen */ = {
+			isa = PBXGroup;
+			children = (
+				13635B93BB66FE574BC8BA7D /* KitchenView.swift */,
+			);
+			path = Kitchen;
+			sourceTree = "<group>";
+		};
+		91652933BB9D80EB4C3305B9 /* You */ = {
+			isa = PBXGroup;
+			children = (
+				C677B95B5D800849F48BA5A0 /* ReportsView.swift */,
+				2978A2823100C56472AF736A /* YouView.swift */,
+			);
+			path = You;
+			sourceTree = "<group>";
+		};
+		CA6BDB49B17F70076F32019C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC35C9474097BAF1BDB6FCAD /* AppModel.swift */,
+				746CAC94469B3B8F56157986 /* Models.swift */,
+				B9C08A574487B6C9C1F4FD08 /* Planner.swift */,
+				E2A1C59B81565DCFBE464B8C /* ReportsAPI.swift */,
+				9AC7BD3F089858E445D8E72C /* Shops.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E57BF50DBEFE934D829F6A43 /* Week */ = {
+			isa = PBXGroup;
+			children = (
+				CD44508FF4046704B3490459 /* RecipeDetailView.swift */,
+				71D888AF0613185CFF92DF43 /* WeekView.swift */,
+			);
+			path = Week;
+			sourceTree = "<group>";
+		};
+		E63F639E45A188F35B8E6241 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D14B2ADD60571082C0044172 /* BricolageGrotesque_400Regular.ttf */,
+				155AEA154D299E7E14D2430D /* BricolageGrotesque_600SemiBold.ttf */,
+				06B2ACEE0AC17F310FFBD5AC /* BricolageGrotesque_800ExtraBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F9AD60E58372C786B367CAE4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				57EBD611F3D80211662DF42A /* AharyaApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA7DB295AF287D391621D13C /* Aharya */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF0B34623468687D363F7F55 /* Build configuration list for PBXNativeTarget "Aharya" */;
+			buildPhases = (
+				ED0D360E8066EE9BBBDB62E5 /* Sources */,
+				7E14FE8D6A1C0FEA1F364B4D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Aharya;
+			packageProductDependencies = (
+			);
+			productName = Aharya;
+			productReference = AB2595C35D2220BEA452FEE0 /* Aharya.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F1490D727A16B46250EBBE70 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					FA7DB295AF287D391621D13C = {
+						DevelopmentTeam = C9NLF34677;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 7390CCD96477EA0A8A6DC953 /* Build configuration list for PBXProject "Aharya" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 76B219F520C7BD927DB429F5;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 8BEF1A51AA16090EF2A09DAB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA7DB295AF287D391621D13C /* Aharya */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7E14FE8D6A1C0FEA1F364B4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D08C5D83030032D52D7C2CB2 /* Assets.xcassets in Resources */,
+				A3146E20A9D9E9370DA3D894 /* BricolageGrotesque_400Regular.ttf in Resources */,
+				6F7C8036AA542B2CF1CA32B8 /* BricolageGrotesque_600SemiBold.ttf in Resources */,
+				00491B637ACBF479E78FEE85 /* BricolageGrotesque_800ExtraBold.ttf in Resources */,
+				9350C9BEE187572C4E72B87A /* catalog.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ED0D360E8066EE9BBBDB62E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C39F184FBDC75C327E77B7B9 /* AharyaApp.swift in Sources */,
+				FB961A7A5178AD4F14A5ACBF /* AppModel.swift in Sources */,
+				3F529AF54C7BF7B890F9FE48 /* CartRunView.swift in Sources */,
+				83BAC8B77B4B339E0D961FB3 /* HaulView.swift in Sources */,
+				664B93072FA7FA0340DD1E73 /* KitchenView.swift in Sources */,
+				2D130619CD816767826CCD2A /* Models.swift in Sources */,
+				D5DC3A1B5D396E226C1E65CF /* OnboardingView.swift in Sources */,
+				B4CD382F50A32EFC423800CF /* Planner.swift in Sources */,
+				76B3DF7E4365CFFD0382B147 /* RecipeDetailView.swift in Sources */,
+				E4FEC3853F3A2104DB71FD5E /* ReportsAPI.swift in Sources */,
+				1A5995F1752A67660F208B89 /* ReportsView.swift in Sources */,
+				3E8C9092E6516F58AB0E5DBC /* Shops.swift in Sources */,
+				A4467FB4FC0885DCA130C900 /* Theme.swift in Sources */,
+				391F727C9E6810AC7ED6999E /* WeekView.swift in Sources */,
+				718F42C591F56A82EF955EBD /* YouView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		15A5CC8308AEB434C5F66C94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Aharya/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.meetjethwa.aharya;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		3595B73DD34D1FE428C581E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Aharya/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.meetjethwa.aharya;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		D51BB6756066B4655BA0B389 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = C9NLF34677;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F1BB1714C83AABA824EDFE53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = C9NLF34677;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7390CCD96477EA0A8A6DC953 /* Build configuration list for PBXProject "Aharya" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D51BB6756066B4655BA0B389 /* Debug */,
+				F1BB1714C83AABA824EDFE53 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DF0B34623468687D363F7F55 /* Build configuration list for PBXNativeTarget "Aharya" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3595B73DD34D1FE428C581E2 /* Debug */,
+				15A5CC8308AEB434C5F66C94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F1490D727A16B46250EBBE70 /* Project object */;
+}

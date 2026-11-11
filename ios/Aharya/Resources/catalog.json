@@ -1,0 +1,3618 @@
+{
+ "ingredients": [
+  {
+   "id": "atta",
+   "name": "whole wheat atta",
+   "aisle": "grains",
+   "unit": "g",
+   "price": 50,
+   "flags": [
+    "gluten"
+   ],
+   "search": "whole wheat atta"
+  },
+  {
+   "id": "rice",
+   "name": "rice",
+   "aisle": "grains",
+   "unit": "g",
+   "price": 70,
+   "flags": [],
+   "search": "sona masoori rice"
+  },
+  {
+   "id": "brown_rice",
+   "name": "brown rice",
+   "aisle": "grains",
+   "unit": "g",
+   "price": 130,
+   "flags": [],
+   "search": "brown rice"
+  },
+  {
+   "id": "poha",
+   "name": "poha",
+   "aisle": "grains",
+   "unit": "g",
+   "price": 70,
+   "flags": [],
+   "search": "poha"
+  },
+  {
+   "id": "rava",
+   "name": "rava (sooji)",
+   "aisle": "grains",
+   "unit": "g",
+   "price": 60,
+   "flags": [
+    "gluten"
+   ],
+   "search": "sooji rava"
+  },
+  {
+   "id": "oats",
+   "name": "rolled oats",
+   "aisle": "grains",
+   "unit": "g",
+   "price": 200,
+   "flags": [
+    "gluten"
+   ],
+   "search": "rolled oats"
+  },
+  {
+   "id": "jowar",
+   "name": "jowar atta",
+   "aisle": "grains",
+   "unit": "g",
+   "price": 70,
+   "flags": [],
+   "search": "jowar atta"
+  },
+  {
+   "id": "bajra",
+   "name": "bajra atta",
+   "aisle": "grains",
+   "unit": "g",
+   "price": 60,
+   "flags": [],
+   "search": "bajra atta"
+  },
+  {
+   "id": "ragi",
+   "name": "ragi atta",
+   "aisle": "grains",
+   "unit": "g",
+   "price": 90,
+   "flags": [],
+   "search": "ragi atta"
+  },
+  {
+   "id": "dalia",
+   "name": "dalia",
+   "aisle": "grains",
+   "unit": "g",
+   "price": 70,
+   "flags": [
+    "gluten"
+   ],
+   "search": "dalia"
+  },
+  {
+   "id": "idli_batter",
+   "name": "idli dosa batter",
+   "aisle": "grains",
+   "unit": "g",
+   "price": 100,
+   "flags": [],
+   "search": "idli dosa batter"
+  },
+  {
+   "id": "bread",
+   "name": "multigrain bread",
+   "aisle": "grains",
+   "unit": "pc",
+   "price": 3.5,
+   "flags": [
+    "gluten"
+   ],
+   "search": "multigrain bread"
+  },
+  {
+   "id": "besan",
+   "name": "besan",
+   "aisle": "pulses",
+   "unit": "g",
+   "price": 110,
+   "flags": [],
+   "search": "besan"
+  },
+  {
+   "id": "moong_dal",
+   "name": "moong dal",
+   "aisle": "pulses",
+   "unit": "g",
+   "price": 140,
+   "flags": [],
+   "search": "moong dal"
+  },
+  {
+   "id": "toor_dal",
+   "name": "toor dal",
+   "aisle": "pulses",
+   "unit": "g",
+   "price": 160,
+   "flags": [],
+   "search": "toor dal"
+  },
+  {
+   "id": "masoor_dal",
+   "name": "masoor dal",
+   "aisle": "pulses",
+   "unit": "g",
+   "price": 120,
+   "flags": [],
+   "search": "masoor dal"
+  },
+  {
+   "id": "chana_dal",
+   "name": "chana dal",
+   "aisle": "pulses",
+   "unit": "g",
+   "price": 110,
+   "flags": [],
+   "search": "chana dal"
+  },
+  {
+   "id": "rajma",
+   "name": "rajma",
+   "aisle": "pulses",
+   "unit": "g",
+   "price": 170,
+   "flags": [],
+   "search": "rajma"
+  },
+  {
+   "id": "kabuli_chana",
+   "name": "kabuli chana",
+   "aisle": "pulses",
+   "unit": "g",
+   "price": 140,
+   "flags": [],
+   "search": "kabuli chana"
+  },
+  {
+   "id": "whole_moong",
+   "name": "whole moong (for sprouts)",
+   "aisle": "pulses",
+   "unit": "g",
+   "price": 130,
+   "flags": [],
+   "search": "green moong whole"
+  },
+  {
+   "id": "roasted_chana",
+   "name": "roasted chana",
+   "aisle": "pulses",
+   "unit": "g",
+   "price": 160,
+   "flags": [],
+   "search": "roasted chana"
+  },
+  {
+   "id": "soya",
+   "name": "soya chunks",
+   "aisle": "protein",
+   "unit": "g",
+   "price": 180,
+   "flags": [
+    "soy"
+   ],
+   "search": "soya chunks"
+  },
+  {
+   "id": "milk",
+   "name": "milk",
+   "aisle": "dairy",
+   "unit": "ml",
+   "price": 60,
+   "flags": [
+    "dairy"
+   ],
+   "search": "toned milk"
+  },
+  {
+   "id": "curd",
+   "name": "curd",
+   "aisle": "dairy",
+   "unit": "g",
+   "price": 90,
+   "flags": [
+    "dairy"
+   ],
+   "search": "curd dahi"
+  },
+  {
+   "id": "paneer",
+   "name": "paneer",
+   "aisle": "dairy",
+   "unit": "g",
+   "price": 420,
+   "flags": [
+    "dairy"
+   ],
+   "search": "paneer"
+  },
+  {
+   "id": "ghee",
+   "name": "ghee",
+   "aisle": "dairy",
+   "unit": "g",
+   "price": 650,
+   "flags": [
+    "dairy",
+    "staple"
+   ],
+   "search": "ghee"
+  },
+  {
+   "id": "eggs",
+   "name": "eggs",
+   "aisle": "protein",
+   "unit": "pc",
+   "price": 7,
+   "flags": [
+    "egg"
+   ],
+   "search": "eggs"
+  },
+  {
+   "id": "chicken_breast",
+   "name": "chicken breast",
+   "aisle": "protein",
+   "unit": "g",
+   "price": 320,
+   "flags": [
+    "meat"
+   ],
+   "search": "chicken breast boneless"
+  },
+  {
+   "id": "chicken",
+   "name": "chicken curry cut",
+   "aisle": "protein",
+   "unit": "g",
+   "price": 240,
+   "flags": [
+    "meat"
+   ],
+   "search": "chicken curry cut"
+  },
+  {
+   "id": "fish",
+   "name": "fish (rohu / basa)",
+   "aisle": "protein",
+   "unit": "g",
+   "price": 260,
+   "flags": [
+    "fish"
+   ],
+   "search": "fish fillet"
+  },
+  {
+   "id": "prawns",
+   "name": "prawns",
+   "aisle": "protein",
+   "unit": "g",
+   "price": 600,
+   "flags": [
+    "fish",
+    "shellfish"
+   ],
+   "search": "prawns"
+  },
+  {
+   "id": "tofu",
+   "name": "tofu",
+   "aisle": "protein",
+   "unit": "g",
+   "price": 350,
+   "flags": [
+    "soy"
+   ],
+   "search": "tofu"
+  },
+  {
+   "id": "onion",
+   "name": "onion",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 40,
+   "flags": [
+    "root"
+   ],
+   "search": "onion"
+  },
+  {
+   "id": "tomato",
+   "name": "tomato",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 40,
+   "flags": [],
+   "search": "tomato"
+  },
+  {
+   "id": "potato",
+   "name": "potato",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 35,
+   "flags": [
+    "root"
+   ],
+   "search": "potato"
+  },
+  {
+   "id": "carrot",
+   "name": "carrot",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 50,
+   "flags": [
+    "root"
+   ],
+   "search": "carrot"
+  },
+  {
+   "id": "capsicum",
+   "name": "capsicum",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 80,
+   "flags": [],
+   "search": "capsicum"
+  },
+  {
+   "id": "cucumber",
+   "name": "cucumber",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 40,
+   "flags": [],
+   "search": "cucumber"
+  },
+  {
+   "id": "spinach",
+   "name": "spinach (palak)",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 60,
+   "flags": [],
+   "search": "palak spinach"
+  },
+  {
+   "id": "methi",
+   "name": "fresh methi",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 80,
+   "flags": [],
+   "search": "methi leaves"
+  },
+  {
+   "id": "lauki",
+   "name": "lauki",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 40,
+   "flags": [],
+   "search": "lauki bottle gourd"
+  },
+  {
+   "id": "bhindi",
+   "name": "bhindi",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 60,
+   "flags": [],
+   "search": "bhindi okra"
+  },
+  {
+   "id": "cauliflower",
+   "name": "cauliflower",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 50,
+   "flags": [],
+   "search": "cauliflower"
+  },
+  {
+   "id": "cabbage",
+   "name": "cabbage",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 35,
+   "flags": [],
+   "search": "cabbage"
+  },
+  {
+   "id": "peas",
+   "name": "green peas",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 100,
+   "flags": [],
+   "search": "green peas"
+  },
+  {
+   "id": "beans",
+   "name": "french beans",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 80,
+   "flags": [],
+   "search": "french beans"
+  },
+  {
+   "id": "pumpkin",
+   "name": "pumpkin",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 40,
+   "flags": [],
+   "search": "pumpkin"
+  },
+  {
+   "id": "mushroom",
+   "name": "mushroom",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 300,
+   "flags": [],
+   "search": "button mushroom"
+  },
+  {
+   "id": "corn",
+   "name": "sweet corn",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 120,
+   "flags": [],
+   "search": "sweet corn"
+  },
+  {
+   "id": "coriander",
+   "name": "coriander leaves",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 100,
+   "flags": [],
+   "search": "coriander leaves"
+  },
+  {
+   "id": "mint",
+   "name": "mint leaves",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 120,
+   "flags": [],
+   "search": "mint leaves"
+  },
+  {
+   "id": "chilli",
+   "name": "green chilli",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 80,
+   "flags": [],
+   "search": "green chilli"
+  },
+  {
+   "id": "ginger",
+   "name": "ginger",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 120,
+   "flags": [
+    "root"
+   ],
+   "search": "ginger"
+  },
+  {
+   "id": "garlic",
+   "name": "garlic",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 200,
+   "flags": [
+    "root"
+   ],
+   "search": "garlic"
+  },
+  {
+   "id": "lemon",
+   "name": "lemon",
+   "aisle": "vegetables",
+   "unit": "pc",
+   "price": 5,
+   "flags": [],
+   "search": "lemon"
+  },
+  {
+   "id": "curry_leaves",
+   "name": "curry leaves",
+   "aisle": "vegetables",
+   "unit": "g",
+   "price": 200,
+   "flags": [],
+   "search": "curry leaves"
+  },
+  {
+   "id": "banana",
+   "name": "banana",
+   "aisle": "fruits",
+   "unit": "pc",
+   "price": 6,
+   "flags": [],
+   "search": "banana"
+  },
+  {
+   "id": "apple",
+   "name": "apple",
+   "aisle": "fruits",
+   "unit": "pc",
+   "price": 25,
+   "flags": [],
+   "search": "apple"
+  },
+  {
+   "id": "guava",
+   "name": "guava",
+   "aisle": "fruits",
+   "unit": "pc",
+   "price": 10,
+   "flags": [],
+   "search": "guava"
+  },
+  {
+   "id": "papaya",
+   "name": "papaya",
+   "aisle": "fruits",
+   "unit": "g",
+   "price": 50,
+   "flags": [],
+   "search": "papaya"
+  },
+  {
+   "id": "pomegranate",
+   "name": "pomegranate",
+   "aisle": "fruits",
+   "unit": "pc",
+   "price": 40,
+   "flags": [],
+   "search": "pomegranate"
+  },
+  {
+   "id": "peanuts",
+   "name": "peanuts",
+   "aisle": "nuts_seeds",
+   "unit": "g",
+   "price": 160,
+   "flags": [
+    "peanut"
+   ],
+   "search": "peanuts"
+  },
+  {
+   "id": "peanut_butter",
+   "name": "peanut butter",
+   "aisle": "nuts_seeds",
+   "unit": "g",
+   "price": 300,
+   "flags": [
+    "peanut"
+   ],
+   "search": "peanut butter unsweetened"
+  },
+  {
+   "id": "almonds",
+   "name": "almonds",
+   "aisle": "nuts_seeds",
+   "unit": "g",
+   "price": 900,
+   "flags": [
+    "nuts"
+   ],
+   "search": "almonds"
+  },
+  {
+   "id": "makhana",
+   "name": "makhana",
+   "aisle": "nuts_seeds",
+   "unit": "g",
+   "price": 900,
+   "flags": [],
+   "search": "makhana"
+  },
+  {
+   "id": "pumpkin_seeds",
+   "name": "pumpkin seeds",
+   "aisle": "nuts_seeds",
+   "unit": "g",
+   "price": 1000,
+   "flags": [],
+   "search": "pumpkin seeds"
+  },
+  {
+   "id": "flaxseed",
+   "name": "flaxseed",
+   "aisle": "nuts_seeds",
+   "unit": "g",
+   "price": 250,
+   "flags": [],
+   "search": "flaxseed"
+  },
+  {
+   "id": "coconut",
+   "name": "desiccated coconut",
+   "aisle": "nuts_seeds",
+   "unit": "g",
+   "price": 300,
+   "flags": [],
+   "search": "desiccated coconut"
+  },
+  {
+   "id": "oil",
+   "name": "cooking oil",
+   "aisle": "pantry",
+   "unit": "ml",
+   "price": 180,
+   "flags": [
+    "staple"
+   ],
+   "search": "groundnut oil"
+  },
+  {
+   "id": "salt",
+   "name": "salt",
+   "aisle": "pantry",
+   "unit": "g",
+   "price": 25,
+   "flags": [
+    "staple"
+   ],
+   "search": "salt"
+  },
+  {
+   "id": "turmeric",
+   "name": "turmeric",
+   "aisle": "pantry",
+   "unit": "g",
+   "price": 300,
+   "flags": [
+    "staple"
+   ],
+   "search": "turmeric powder"
+  },
+  {
+   "id": "chilli_powder",
+   "name": "red chilli powder",
+   "aisle": "pantry",
+   "unit": "g",
+   "price": 350,
+   "flags": [
+    "staple"
+   ],
+   "search": "red chilli powder"
+  },
+  {
+   "id": "cumin",
+   "name": "jeera",
+   "aisle": "pantry",
+   "unit": "g",
+   "price": 500,
+   "flags": [
+    "staple"
+   ],
+   "search": "jeera"
+  },
+  {
+   "id": "mustard_seeds",
+   "name": "mustard seeds",
+   "aisle": "pantry",
+   "unit": "g",
+   "price": 150,
+   "flags": [
+    "staple"
+   ],
+   "search": "mustard seeds rai"
+  },
+  {
+   "id": "garam_masala",
+   "name": "garam masala",
+   "aisle": "pantry",
+   "unit": "g",
+   "price": 600,
+   "flags": [
+    "staple"
+   ],
+   "search": "garam masala"
+  },
+  {
+   "id": "coriander_powder",
+   "name": "dhania powder",
+   "aisle": "pantry",
+   "unit": "g",
+   "price": 250,
+   "flags": [
+    "staple"
+   ],
+   "search": "coriander powder"
+  },
+  {
+   "id": "hing",
+   "name": "hing",
+   "aisle": "pantry",
+   "unit": "g",
+   "price": 2000,
+   "flags": [
+    "staple"
+   ],
+   "search": "hing asafoetida"
+  },
+  {
+   "id": "black_pepper",
+   "name": "black pepper",
+   "aisle": "pantry",
+   "unit": "g",
+   "price": 900,
+   "flags": [
+    "staple"
+   ],
+   "search": "black pepper"
+  },
+  {
+   "id": "sambar_masala",
+   "name": "sambar masala",
+   "aisle": "pantry",
+   "unit": "g",
+   "price": 450,
+   "flags": [],
+   "search": "sambar masala"
+  },
+  {
+   "id": "chole_masala",
+   "name": "chole masala",
+   "aisle": "pantry",
+   "unit": "g",
+   "price": 500,
+   "flags": [],
+   "search": "chole masala"
+  },
+  {
+   "id": "tamarind",
+   "name": "tamarind",
+   "aisle": "pantry",
+   "unit": "g",
+   "price": 200,
+   "flags": [],
+   "search": "tamarind"
+  },
+  {
+   "id": "green_tea",
+   "name": "green tea bags",
+   "aisle": "pantry",
+   "unit": "pc",
+   "price": 3,
+   "flags": [],
+   "search": "green tea bags"
+  }
+ ],
+ "recipes": [
+  {
+   "id": "moong_chilla",
+   "name": "Moong dal chilla + mint curd",
+   "emoji": "🥞",
+   "slot": "breakfast",
+   "cuisine": "north",
+   "minutes": 20,
+   "kcal": 330,
+   "protein": 20,
+   "carbs": 40,
+   "fat": 9,
+   "ingredients": [
+    {
+     "id": "moong_dal",
+     "qty": 70
+    },
+    {
+     "id": "curd",
+     "qty": 80
+    },
+    {
+     "id": "onion",
+     "qty": 20
+    },
+    {
+     "id": "tomato",
+     "qty": 30
+    },
+    {
+     "id": "coriander",
+     "qty": 5
+    },
+    {
+     "id": "chilli",
+     "qty": 2
+    },
+    {
+     "id": "mint",
+     "qty": 5
+    },
+    {
+     "id": "oil",
+     "qty": 5
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Soak moong dal 2 hours (or overnight), then grind with chilli and a little water to a smooth batter.",
+    "Stir in chopped onion, tomato, coriander and salt.",
+    "Spread a ladle thin on a hot greased tawa; cook 2 min a side until golden.",
+    "Blend mint into the curd with a pinch of salt and serve alongside."
+   ],
+   "tags": [],
+   "kind": "veg",
+   "jain": "adapt",
+   "allergens": [
+    "dairy"
+   ]
+  },
+  {
+   "id": "besan_paneer_chilla",
+   "name": "Besan chilla stuffed with paneer",
+   "emoji": "🥞",
+   "slot": "breakfast",
+   "cuisine": "north",
+   "minutes": 20,
+   "kcal": 360,
+   "protein": 22,
+   "carbs": 28,
+   "fat": 16,
+   "ingredients": [
+    {
+     "id": "besan",
+     "qty": 60
+    },
+    {
+     "id": "paneer",
+     "qty": 50
+    },
+    {
+     "id": "tomato",
+     "qty": 30
+    },
+    {
+     "id": "capsicum",
+     "qty": 30
+    },
+    {
+     "id": "coriander",
+     "qty": 5
+    },
+    {
+     "id": "oil",
+     "qty": 5
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    },
+    {
+     "id": "turmeric",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Whisk besan, turmeric, salt and water into a pourable batter.",
+    "Add chopped tomato, capsicum and coriander.",
+    "Pour onto a hot greased tawa and spread thin.",
+    "Crumble paneer over one half, fold, and cook both sides till golden."
+   ],
+   "tags": [],
+   "kind": "veg",
+   "jain": "yes",
+   "allergens": [
+    "dairy"
+   ]
+  },
+  {
+   "id": "kanda_poha",
+   "name": "Kanda poha with peanuts",
+   "emoji": "🍚",
+   "slot": "breakfast",
+   "cuisine": "west",
+   "minutes": 20,
+   "kcal": 340,
+   "protein": 9,
+   "carbs": 52,
+   "fat": 11,
+   "ingredients": [
+    {
+     "id": "poha",
+     "qty": 60
+    },
+    {
+     "id": "onion",
+     "qty": 40
+    },
+    {
+     "id": "peanuts",
+     "qty": 15
+    },
+    {
+     "id": "peas",
+     "qty": 20
+    },
+    {
+     "id": "lemon",
+     "qty": 0.5
+    },
+    {
+     "id": "curry_leaves",
+     "qty": 2
+    },
+    {
+     "id": "mustard_seeds",
+     "qty": 1
+    },
+    {
+     "id": "turmeric",
+     "qty": 1
+    },
+    {
+     "id": "oil",
+     "qty": 7
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Rinse poha in a strainer and let it soften for 5 minutes.",
+    "Roast peanuts in oil, then add mustard seeds, curry leaves and onion; sauté till soft.",
+    "Add peas, turmeric and salt, then the poha. Toss gently on low heat for 3 minutes.",
+    "Finish with lemon juice."
+   ],
+   "tags": [
+    "high_gi"
+   ],
+   "kind": "vegan",
+   "jain": "adapt",
+   "allergens": [
+    "peanut"
+   ]
+  },
+  {
+   "id": "veg_upma",
+   "name": "Vegetable upma",
+   "emoji": "🥣",
+   "slot": "breakfast",
+   "cuisine": "south",
+   "minutes": 20,
+   "kcal": 320,
+   "protein": 9,
+   "carbs": 48,
+   "fat": 10,
+   "ingredients": [
+    {
+     "id": "rava",
+     "qty": 55
+    },
+    {
+     "id": "onion",
+     "qty": 30
+    },
+    {
+     "id": "carrot",
+     "qty": 30
+    },
+    {
+     "id": "peas",
+     "qty": 20
+    },
+    {
+     "id": "curry_leaves",
+     "qty": 2
+    },
+    {
+     "id": "mustard_seeds",
+     "qty": 1
+    },
+    {
+     "id": "oil",
+     "qty": 7
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Dry-roast rava till it smells nutty; set aside.",
+    "Splutter mustard seeds and curry leaves in oil, add onion, carrot and peas; cook 4 minutes.",
+    "Pour in 1 cup hot water per serving with salt and bring to a boil.",
+    "Stream in the rava while stirring; cover and cook 2 minutes."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "no",
+   "allergens": [
+    "gluten"
+   ]
+  },
+  {
+   "id": "idli_sambar",
+   "name": "Idli with sambar",
+   "emoji": "🍥",
+   "slot": "breakfast",
+   "cuisine": "south",
+   "minutes": 25,
+   "kcal": 330,
+   "protein": 13,
+   "carbs": 58,
+   "fat": 5,
+   "ingredients": [
+    {
+     "id": "idli_batter",
+     "qty": 180
+    },
+    {
+     "id": "toor_dal",
+     "qty": 30
+    },
+    {
+     "id": "tomato",
+     "qty": 30
+    },
+    {
+     "id": "pumpkin",
+     "qty": 50
+    },
+    {
+     "id": "onion",
+     "qty": 20
+    },
+    {
+     "id": "sambar_masala",
+     "qty": 3
+    },
+    {
+     "id": "tamarind",
+     "qty": 3
+    },
+    {
+     "id": "oil",
+     "qty": 3
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Steam the batter in greased idli moulds for 10–12 minutes.",
+    "Pressure-cook toor dal with turmeric for 3 whistles and mash.",
+    "Cook onion, tomato and pumpkin with sambar masala and tamarind water for 8 minutes.",
+    "Add the dal and simmer 5 minutes; serve hot with the idlis."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "adapt",
+   "allergens": []
+  },
+  {
+   "id": "masala_oats",
+   "name": "Masala oats",
+   "emoji": "🥣",
+   "slot": "breakfast",
+   "cuisine": "any",
+   "minutes": 15,
+   "kcal": 300,
+   "protein": 11,
+   "carbs": 44,
+   "fat": 8,
+   "ingredients": [
+    {
+     "id": "oats",
+     "qty": 50
+    },
+    {
+     "id": "onion",
+     "qty": 20
+    },
+    {
+     "id": "tomato",
+     "qty": 30
+    },
+    {
+     "id": "carrot",
+     "qty": 30
+    },
+    {
+     "id": "peas",
+     "qty": 20
+    },
+    {
+     "id": "oil",
+     "qty": 5
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    },
+    {
+     "id": "turmeric",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Sauté onion, carrot and peas in oil for 3 minutes.",
+    "Add tomato, turmeric and salt and cook till soft.",
+    "Add oats and 1 cup water per serving; simmer 4 minutes, stirring."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "no",
+   "allergens": [
+    "gluten"
+   ]
+  },
+  {
+   "id": "methi_thepla",
+   "name": "Methi thepla + curd",
+   "emoji": "🫓",
+   "slot": "breakfast",
+   "cuisine": "west",
+   "minutes": 30,
+   "kcal": 370,
+   "protein": 12,
+   "carbs": 50,
+   "fat": 13,
+   "ingredients": [
+    {
+     "id": "atta",
+     "qty": 60
+    },
+    {
+     "id": "methi",
+     "qty": 30
+    },
+    {
+     "id": "besan",
+     "qty": 10
+    },
+    {
+     "id": "curd",
+     "qty": 100
+    },
+    {
+     "id": "oil",
+     "qty": 7
+    },
+    {
+     "id": "turmeric",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Mix atta, besan, chopped methi, turmeric, salt and a spoon of curd.",
+    "Knead into a soft dough with water; rest 10 minutes.",
+    "Roll thin and cook on a hot tawa with a few drops of oil till spotted on both sides.",
+    "Serve with the rest of the curd."
+   ],
+   "tags": [],
+   "kind": "veg",
+   "jain": "yes",
+   "allergens": [
+    "dairy",
+    "gluten"
+   ]
+  },
+  {
+   "id": "egg_bhurji_toast",
+   "name": "Egg bhurji + toast",
+   "emoji": "🍳",
+   "slot": "breakfast",
+   "cuisine": "any",
+   "minutes": 15,
+   "kcal": 380,
+   "protein": 22,
+   "carbs": 30,
+   "fat": 18,
+   "ingredients": [
+    {
+     "id": "eggs",
+     "qty": 2
+    },
+    {
+     "id": "bread",
+     "qty": 2
+    },
+    {
+     "id": "onion",
+     "qty": 30
+    },
+    {
+     "id": "tomato",
+     "qty": 30
+    },
+    {
+     "id": "oil",
+     "qty": 5
+    },
+    {
+     "id": "salt",
+     "qty": 1
+    },
+    {
+     "id": "turmeric",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Sauté onion in oil till soft, add tomato, turmeric and salt.",
+    "Crack in the eggs and scramble on medium heat till just set.",
+    "Toast the bread and serve with the bhurji."
+   ],
+   "tags": [],
+   "kind": "egg",
+   "jain": "no",
+   "allergens": [
+    "egg",
+    "gluten"
+   ]
+  },
+  {
+   "id": "ragi_dosa",
+   "name": "Ragi dosa + coconut chutney",
+   "emoji": "🥞",
+   "slot": "breakfast",
+   "cuisine": "south",
+   "minutes": 20,
+   "kcal": 330,
+   "protein": 9,
+   "carbs": 50,
+   "fat": 10,
+   "ingredients": [
+    {
+     "id": "ragi",
+     "qty": 60
+    },
+    {
+     "id": "rava",
+     "qty": 15
+    },
+    {
+     "id": "curd",
+     "qty": 30
+    },
+    {
+     "id": "coconut",
+     "qty": 15
+    },
+    {
+     "id": "chilli",
+     "qty": 2
+    },
+    {
+     "id": "oil",
+     "qty": 5
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Whisk ragi, rava, curd, salt and water into a thin batter; rest 10 minutes.",
+    "Pour onto a very hot tawa in a spiral and drizzle oil; cook till crisp.",
+    "Grind coconut with chilli, salt and water for the chutney."
+   ],
+   "tags": [],
+   "kind": "veg",
+   "jain": "yes",
+   "allergens": [
+    "dairy",
+    "gluten"
+   ]
+  },
+  {
+   "id": "tofu_bhurji",
+   "name": "Tofu bhurji + jowar roti",
+   "emoji": "🌮",
+   "slot": "breakfast",
+   "cuisine": "any",
+   "minutes": 20,
+   "kcal": 340,
+   "protein": 22,
+   "carbs": 30,
+   "fat": 14,
+   "ingredients": [
+    {
+     "id": "tofu",
+     "qty": 120
+    },
+    {
+     "id": "jowar",
+     "qty": 40
+    },
+    {
+     "id": "onion",
+     "qty": 30
+    },
+    {
+     "id": "tomato",
+     "qty": 40
+    },
+    {
+     "id": "capsicum",
+     "qty": 30
+    },
+    {
+     "id": "oil",
+     "qty": 5
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    },
+    {
+     "id": "turmeric",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Knead jowar atta with warm water and pat into a roti; cook on a tawa.",
+    "Sauté onion, capsicum and tomato with turmeric and salt.",
+    "Crumble in the tofu and cook 4 minutes."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "adapt",
+   "allergens": [
+    "soy"
+   ]
+  },
+  {
+   "id": "sprouts_bowl",
+   "name": "Sprouts chaat bowl",
+   "emoji": "🥗",
+   "slot": "breakfast",
+   "cuisine": "any",
+   "minutes": 10,
+   "kcal": 280,
+   "protein": 16,
+   "carbs": 42,
+   "fat": 5,
+   "ingredients": [
+    {
+     "id": "whole_moong",
+     "qty": 70
+    },
+    {
+     "id": "onion",
+     "qty": 20
+    },
+    {
+     "id": "tomato",
+     "qty": 40
+    },
+    {
+     "id": "cucumber",
+     "qty": 50
+    },
+    {
+     "id": "lemon",
+     "qty": 0.5
+    },
+    {
+     "id": "pomegranate",
+     "qty": 0.25
+    },
+    {
+     "id": "salt",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Soak whole moong overnight, drain and keep covered for a day to sprout (or buy sprouts).",
+    "Steam the sprouts 5 minutes.",
+    "Toss with chopped onion, tomato, cucumber, pomegranate, lemon and salt."
+   ],
+   "tags": [
+    "high_iron"
+   ],
+   "kind": "vegan",
+   "jain": "adapt",
+   "allergens": []
+  },
+  {
+   "id": "overnight_oats",
+   "name": "Banana peanut-butter overnight oats",
+   "emoji": "🥣",
+   "slot": "breakfast",
+   "cuisine": "any",
+   "minutes": 5,
+   "kcal": 380,
+   "protein": 14,
+   "carbs": 52,
+   "fat": 13,
+   "ingredients": [
+    {
+     "id": "oats",
+     "qty": 50
+    },
+    {
+     "id": "milk",
+     "qty": 150
+    },
+    {
+     "id": "banana",
+     "qty": 1
+    },
+    {
+     "id": "peanut_butter",
+     "qty": 15
+    },
+    {
+     "id": "flaxseed",
+     "qty": 5
+    }
+   ],
+   "steps": [
+    "Mix oats, milk and flaxseed in a jar.",
+    "Top with sliced banana and peanut butter.",
+    "Refrigerate overnight; eat cold."
+   ],
+   "tags": [],
+   "kind": "veg",
+   "jain": "yes",
+   "allergens": [
+    "dairy",
+    "gluten",
+    "peanut"
+   ]
+  },
+  {
+   "id": "paneer_paratha",
+   "name": "Paneer paratha + curd",
+   "emoji": "🫓",
+   "slot": "breakfast",
+   "cuisine": "north",
+   "minutes": 30,
+   "kcal": 420,
+   "protein": 20,
+   "carbs": 45,
+   "fat": 17,
+   "ingredients": [
+    {
+     "id": "atta",
+     "qty": 70
+    },
+    {
+     "id": "paneer",
+     "qty": 50
+    },
+    {
+     "id": "curd",
+     "qty": 80
+    },
+    {
+     "id": "coriander",
+     "qty": 5
+    },
+    {
+     "id": "chilli",
+     "qty": 2
+    },
+    {
+     "id": "oil",
+     "qty": 7
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Knead atta into a soft dough.",
+    "Mix grated paneer, chilli, coriander and salt for the filling.",
+    "Stuff, roll and cook on a tawa with a little oil till golden.",
+    "Serve with curd."
+   ],
+   "tags": [
+    "high_sat_fat"
+   ],
+   "kind": "veg",
+   "jain": "yes",
+   "allergens": [
+    "dairy",
+    "gluten"
+   ]
+  },
+  {
+   "id": "masala_omelette",
+   "name": "Masala omelette + apple",
+   "emoji": "🍳",
+   "slot": "breakfast",
+   "cuisine": "any",
+   "minutes": 10,
+   "kcal": 300,
+   "protein": 15,
+   "carbs": 18,
+   "fat": 17,
+   "ingredients": [
+    {
+     "id": "eggs",
+     "qty": 2
+    },
+    {
+     "id": "onion",
+     "qty": 20
+    },
+    {
+     "id": "tomato",
+     "qty": 20
+    },
+    {
+     "id": "capsicum",
+     "qty": 20
+    },
+    {
+     "id": "apple",
+     "qty": 1
+    },
+    {
+     "id": "oil",
+     "qty": 5
+    },
+    {
+     "id": "salt",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Whisk eggs with chopped onion, tomato, capsicum and salt.",
+    "Cook in a hot oiled pan, fold, and serve with a sliced apple."
+   ],
+   "tags": [],
+   "kind": "egg",
+   "jain": "no",
+   "allergens": [
+    "egg"
+   ]
+  },
+  {
+   "id": "dal_tadka_rice",
+   "name": "Dal tadka, jeera rice + salad",
+   "emoji": "🍛",
+   "slot": "lunch",
+   "cuisine": "north",
+   "minutes": 35,
+   "kcal": 520,
+   "protein": 20,
+   "carbs": 80,
+   "fat": 12,
+   "ingredients": [
+    {
+     "id": "toor_dal",
+     "qty": 50
+    },
+    {
+     "id": "rice",
+     "qty": 60
+    },
+    {
+     "id": "onion",
+     "qty": 30
+    },
+    {
+     "id": "tomato",
+     "qty": 50
+    },
+    {
+     "id": "garlic",
+     "qty": 4
+    },
+    {
+     "id": "cucumber",
+     "qty": 60
+    },
+    {
+     "id": "ghee",
+     "qty": 5
+    },
+    {
+     "id": "cumin",
+     "qty": 2
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    },
+    {
+     "id": "turmeric",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Pressure-cook toor dal with turmeric and salt for 3 whistles.",
+    "Cook rice with a pinch of jeera.",
+    "Make a tadka: jeera, garlic, onion and tomato in ghee; pour over the dal and simmer 5 minutes.",
+    "Serve with sliced cucumber."
+   ],
+   "tags": [],
+   "kind": "veg",
+   "jain": "adapt",
+   "allergens": [
+    "dairy"
+   ]
+  },
+  {
+   "id": "rajma_chawal",
+   "name": "Rajma chawal + kachumber",
+   "emoji": "🍛",
+   "slot": "lunch",
+   "cuisine": "north",
+   "minutes": 45,
+   "kcal": 540,
+   "protein": 21,
+   "carbs": 86,
+   "fat": 10,
+   "ingredients": [
+    {
+     "id": "rajma",
+     "qty": 55
+    },
+    {
+     "id": "brown_rice",
+     "qty": 60
+    },
+    {
+     "id": "onion",
+     "qty": 40
+    },
+    {
+     "id": "tomato",
+     "qty": 60
+    },
+    {
+     "id": "ginger",
+     "qty": 3
+    },
+    {
+     "id": "garlic",
+     "qty": 4
+    },
+    {
+     "id": "cucumber",
+     "qty": 50
+    },
+    {
+     "id": "oil",
+     "qty": 7
+    },
+    {
+     "id": "garam_masala",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Soak rajma overnight; pressure-cook 6–7 whistles till soft.",
+    "Cook brown rice (it takes about 25 minutes).",
+    "Cook onion, ginger and garlic till brown, add tomato and garam masala till jammy.",
+    "Add rajma with its water; simmer 10 minutes. Serve with chopped cucumber."
+   ],
+   "tags": [
+    "high_iron"
+   ],
+   "kind": "vegan",
+   "jain": "adapt",
+   "allergens": []
+  },
+  {
+   "id": "chole_phulka",
+   "name": "Chole + phulka + salad",
+   "emoji": "🫓",
+   "slot": "lunch",
+   "cuisine": "north",
+   "minutes": 40,
+   "kcal": 540,
+   "protein": 21,
+   "carbs": 78,
+   "fat": 14,
+   "ingredients": [
+    {
+     "id": "kabuli_chana",
+     "qty": 55
+    },
+    {
+     "id": "atta",
+     "qty": 60
+    },
+    {
+     "id": "onion",
+     "qty": 40
+    },
+    {
+     "id": "tomato",
+     "qty": 60
+    },
+    {
+     "id": "chole_masala",
+     "qty": 4
+    },
+    {
+     "id": "cucumber",
+     "qty": 50
+    },
+    {
+     "id": "oil",
+     "qty": 8
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Soak kabuli chana overnight; pressure-cook 5 whistles.",
+    "Cook onion and tomato with chole masala till oil separates.",
+    "Add chana and some cooking water; simmer 10 minutes.",
+    "Make phulkas from the atta and serve with cucumber."
+   ],
+   "tags": [
+    "high_iron"
+   ],
+   "kind": "vegan",
+   "jain": "adapt",
+   "allergens": [
+    "gluten"
+   ]
+  },
+  {
+   "id": "palak_paneer",
+   "name": "Palak paneer + phulka",
+   "emoji": "🥬",
+   "slot": "lunch",
+   "cuisine": "north",
+   "minutes": 30,
+   "kcal": 520,
+   "protein": 26,
+   "carbs": 48,
+   "fat": 24,
+   "ingredients": [
+    {
+     "id": "spinach",
+     "qty": 150
+    },
+    {
+     "id": "paneer",
+     "qty": 80
+    },
+    {
+     "id": "atta",
+     "qty": 60
+    },
+    {
+     "id": "onion",
+     "qty": 30
+    },
+    {
+     "id": "tomato",
+     "qty": 30
+    },
+    {
+     "id": "garlic",
+     "qty": 4
+    },
+    {
+     "id": "oil",
+     "qty": 7
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Blanch spinach 2 minutes, cool and blend.",
+    "Cook onion, garlic and tomato, add the spinach purée and salt.",
+    "Add paneer cubes and simmer 5 minutes.",
+    "Serve with phulkas."
+   ],
+   "tags": [
+    "high_iron",
+    "high_sat_fat"
+   ],
+   "kind": "veg",
+   "jain": "adapt",
+   "allergens": [
+    "dairy",
+    "gluten"
+   ]
+  },
+  {
+   "id": "sambar_rice",
+   "name": "Sambar rice + beans poriyal",
+   "emoji": "🍛",
+   "slot": "lunch",
+   "cuisine": "south",
+   "minutes": 35,
+   "kcal": 500,
+   "protein": 16,
+   "carbs": 80,
+   "fat": 11,
+   "ingredients": [
+    {
+     "id": "rice",
+     "qty": 60
+    },
+    {
+     "id": "toor_dal",
+     "qty": 40
+    },
+    {
+     "id": "pumpkin",
+     "qty": 60
+    },
+    {
+     "id": "beans",
+     "qty": 100
+    },
+    {
+     "id": "coconut",
+     "qty": 10
+    },
+    {
+     "id": "sambar_masala",
+     "qty": 4
+    },
+    {
+     "id": "tamarind",
+     "qty": 4
+    },
+    {
+     "id": "mustard_seeds",
+     "qty": 1
+    },
+    {
+     "id": "oil",
+     "qty": 7
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Cook rice and toor dal separately.",
+    "Simmer pumpkin in tamarind water with sambar masala, then add the dal.",
+    "For poriyal, stir-fry chopped beans with mustard seeds and finish with coconut.",
+    "Serve sambar over rice with the poriyal."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "yes",
+   "allergens": []
+  },
+  {
+   "id": "bhakri_pitla",
+   "name": "Jowar bhakri + pitla + salad",
+   "emoji": "🫓",
+   "slot": "lunch",
+   "cuisine": "west",
+   "minutes": 30,
+   "kcal": 480,
+   "protein": 19,
+   "carbs": 68,
+   "fat": 13,
+   "ingredients": [
+    {
+     "id": "jowar",
+     "qty": 70
+    },
+    {
+     "id": "besan",
+     "qty": 40
+    },
+    {
+     "id": "onion",
+     "qty": 30
+    },
+    {
+     "id": "garlic",
+     "qty": 3
+    },
+    {
+     "id": "cucumber",
+     "qty": 60
+    },
+    {
+     "id": "oil",
+     "qty": 8
+    },
+    {
+     "id": "mustard_seeds",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    },
+    {
+     "id": "turmeric",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Knead jowar atta with hot water and pat into bhakris; cook on a tawa.",
+    "Temper mustard seeds, garlic and onion in oil.",
+    "Whisk besan with water, turmeric and salt; pour in and stir till thick and glossy.",
+    "Serve with cucumber."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "adapt",
+   "allergens": []
+  },
+  {
+   "id": "moong_khichdi_kadhi",
+   "name": "Moong khichdi + kadhi",
+   "emoji": "🥣",
+   "slot": "lunch",
+   "cuisine": "west",
+   "minutes": 35,
+   "kcal": 500,
+   "protein": 19,
+   "carbs": 76,
+   "fat": 12,
+   "ingredients": [
+    {
+     "id": "rice",
+     "qty": 40
+    },
+    {
+     "id": "moong_dal",
+     "qty": 40
+    },
+    {
+     "id": "curd",
+     "qty": 120
+    },
+    {
+     "id": "besan",
+     "qty": 15
+    },
+    {
+     "id": "ghee",
+     "qty": 5
+    },
+    {
+     "id": "cumin",
+     "qty": 2
+    },
+    {
+     "id": "curry_leaves",
+     "qty": 2
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    },
+    {
+     "id": "turmeric",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Pressure-cook rice and moong dal with turmeric, salt and 3 cups water.",
+    "Whisk curd with besan and water; simmer 10 minutes, stirring.",
+    "Temper jeera and curry leaves in ghee and pour over the kadhi."
+   ],
+   "tags": [],
+   "kind": "veg",
+   "jain": "yes",
+   "allergens": [
+    "dairy"
+   ]
+  },
+  {
+   "id": "chicken_curry_phulka",
+   "name": "Home-style chicken curry + phulka",
+   "emoji": "🍗",
+   "slot": "lunch",
+   "cuisine": "any",
+   "minutes": 40,
+   "kcal": 540,
+   "protein": 38,
+   "carbs": 48,
+   "fat": 18,
+   "ingredients": [
+    {
+     "id": "chicken",
+     "qty": 130
+    },
+    {
+     "id": "atta",
+     "qty": 60
+    },
+    {
+     "id": "onion",
+     "qty": 50
+    },
+    {
+     "id": "tomato",
+     "qty": 60
+    },
+    {
+     "id": "ginger",
+     "qty": 4
+    },
+    {
+     "id": "garlic",
+     "qty": 5
+    },
+    {
+     "id": "curd",
+     "qty": 30
+    },
+    {
+     "id": "oil",
+     "qty": 8
+    },
+    {
+     "id": "garam_masala",
+     "qty": 1
+    },
+    {
+     "id": "chilli_powder",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Marinate chicken in curd, salt and chilli powder for 30 minutes (or overnight).",
+    "Brown onion in oil, add ginger, garlic and tomato; cook till jammy.",
+    "Add chicken and garam masala; cover and cook 20 minutes.",
+    "Serve with phulkas."
+   ],
+   "tags": [],
+   "kind": "nonveg",
+   "jain": "no",
+   "allergens": [
+    "dairy",
+    "gluten"
+   ]
+  },
+  {
+   "id": "fish_curry_rice",
+   "name": "Bengali-style fish curry + rice",
+   "emoji": "🐟",
+   "slot": "lunch",
+   "cuisine": "east",
+   "minutes": 35,
+   "kcal": 520,
+   "protein": 32,
+   "carbs": 62,
+   "fat": 14,
+   "ingredients": [
+    {
+     "id": "fish",
+     "qty": 120
+    },
+    {
+     "id": "rice",
+     "qty": 60
+    },
+    {
+     "id": "tomato",
+     "qty": 50
+    },
+    {
+     "id": "onion",
+     "qty": 30
+    },
+    {
+     "id": "mustard_seeds",
+     "qty": 2
+    },
+    {
+     "id": "turmeric",
+     "qty": 1
+    },
+    {
+     "id": "oil",
+     "qty": 8
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Rub fish with turmeric and salt; shallow-fry 2 minutes a side.",
+    "Splutter mustard seeds, add onion and tomato and cook down.",
+    "Add 1 cup water, then the fish; simmer 8 minutes.",
+    "Serve with rice."
+   ],
+   "tags": [],
+   "kind": "nonveg",
+   "jain": "no",
+   "allergens": [
+    "fish"
+   ]
+  },
+  {
+   "id": "soya_pulao",
+   "name": "Soya chunk pulao + raita",
+   "emoji": "🍚",
+   "slot": "lunch",
+   "cuisine": "any",
+   "minutes": 30,
+   "kcal": 510,
+   "protein": 28,
+   "carbs": 70,
+   "fat": 12,
+   "ingredients": [
+    {
+     "id": "brown_rice",
+     "qty": 60
+    },
+    {
+     "id": "soya",
+     "qty": 30
+    },
+    {
+     "id": "peas",
+     "qty": 40
+    },
+    {
+     "id": "carrot",
+     "qty": 40
+    },
+    {
+     "id": "onion",
+     "qty": 30
+    },
+    {
+     "id": "curd",
+     "qty": 80
+    },
+    {
+     "id": "oil",
+     "qty": 7
+    },
+    {
+     "id": "garam_masala",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Soak soya chunks in hot water 10 minutes; squeeze dry.",
+    "Sauté onion, carrot, peas and soya with garam masala.",
+    "Add rinsed rice and water; cook till done.",
+    "Whisk curd with salt for the raita."
+   ],
+   "tags": [],
+   "kind": "veg",
+   "jain": "no",
+   "allergens": [
+    "dairy",
+    "soy"
+   ]
+  },
+  {
+   "id": "tofu_matar",
+   "name": "Tofu matar + phulka",
+   "emoji": "🫓",
+   "slot": "lunch",
+   "cuisine": "any",
+   "minutes": 30,
+   "kcal": 490,
+   "protein": 25,
+   "carbs": 52,
+   "fat": 18,
+   "ingredients": [
+    {
+     "id": "tofu",
+     "qty": 120
+    },
+    {
+     "id": "peas",
+     "qty": 60
+    },
+    {
+     "id": "atta",
+     "qty": 60
+    },
+    {
+     "id": "tomato",
+     "qty": 60
+    },
+    {
+     "id": "onion",
+     "qty": 30
+    },
+    {
+     "id": "oil",
+     "qty": 7
+    },
+    {
+     "id": "garam_masala",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Cook onion and tomato with garam masala till jammy.",
+    "Add peas and a little water; simmer 5 minutes.",
+    "Add tofu cubes and cook 5 more minutes. Serve with phulkas."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "adapt",
+   "allergens": [
+    "gluten",
+    "soy"
+   ]
+  },
+  {
+   "id": "bhindi_dal",
+   "name": "Bhindi masala, masoor dal + phulka",
+   "emoji": "🫓",
+   "slot": "lunch",
+   "cuisine": "north",
+   "minutes": 35,
+   "kcal": 500,
+   "protein": 18,
+   "carbs": 66,
+   "fat": 16,
+   "ingredients": [
+    {
+     "id": "bhindi",
+     "qty": 150
+    },
+    {
+     "id": "masoor_dal",
+     "qty": 40
+    },
+    {
+     "id": "atta",
+     "qty": 60
+    },
+    {
+     "id": "onion",
+     "qty": 30
+    },
+    {
+     "id": "tomato",
+     "qty": 40
+    },
+    {
+     "id": "oil",
+     "qty": 9
+    },
+    {
+     "id": "coriander_powder",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    },
+    {
+     "id": "turmeric",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Pressure-cook masoor dal with turmeric and salt for 2 whistles.",
+    "Stir-fry sliced bhindi in oil on high heat till no longer sticky.",
+    "Add onion, tomato and dhania powder; cook 5 minutes.",
+    "Serve with dal and phulkas."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "adapt",
+   "allergens": [
+    "gluten"
+   ]
+  },
+  {
+   "id": "egg_curry_rice",
+   "name": "Egg curry + rice",
+   "emoji": "🥚",
+   "slot": "lunch",
+   "cuisine": "any",
+   "minutes": 30,
+   "kcal": 520,
+   "protein": 22,
+   "carbs": 62,
+   "fat": 18,
+   "ingredients": [
+    {
+     "id": "eggs",
+     "qty": 2
+    },
+    {
+     "id": "rice",
+     "qty": 60
+    },
+    {
+     "id": "onion",
+     "qty": 50
+    },
+    {
+     "id": "tomato",
+     "qty": 70
+    },
+    {
+     "id": "ginger",
+     "qty": 3
+    },
+    {
+     "id": "oil",
+     "qty": 8
+    },
+    {
+     "id": "garam_masala",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Boil eggs 10 minutes, peel and score.",
+    "Brown onion and ginger, add tomato and garam masala till thick.",
+    "Add water and the eggs; simmer 8 minutes. Serve with rice."
+   ],
+   "tags": [],
+   "kind": "egg",
+   "jain": "no",
+   "allergens": [
+    "egg"
+   ]
+  },
+  {
+   "id": "curd_rice",
+   "name": "Curd rice + cucumber",
+   "emoji": "🍚",
+   "slot": "lunch",
+   "cuisine": "south",
+   "minutes": 15,
+   "kcal": 450,
+   "protein": 14,
+   "carbs": 70,
+   "fat": 12,
+   "ingredients": [
+    {
+     "id": "rice",
+     "qty": 60
+    },
+    {
+     "id": "curd",
+     "qty": 150
+    },
+    {
+     "id": "cucumber",
+     "qty": 60
+    },
+    {
+     "id": "pomegranate",
+     "qty": 0.25
+    },
+    {
+     "id": "mustard_seeds",
+     "qty": 1
+    },
+    {
+     "id": "curry_leaves",
+     "qty": 2
+    },
+    {
+     "id": "oil",
+     "qty": 5
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Cook rice soft and let it cool slightly.",
+    "Mix with curd, salt and grated cucumber.",
+    "Temper mustard seeds and curry leaves in oil and pour over; top with pomegranate."
+   ],
+   "tags": [
+    "high_gi"
+   ],
+   "kind": "veg",
+   "jain": "yes",
+   "allergens": [
+    "dairy"
+   ]
+  },
+  {
+   "id": "makhana",
+   "name": "Roasted makhana",
+   "emoji": "🍿",
+   "slot": "snack",
+   "cuisine": "any",
+   "minutes": 10,
+   "kcal": 130,
+   "protein": 4,
+   "carbs": 20,
+   "fat": 4,
+   "ingredients": [
+    {
+     "id": "makhana",
+     "qty": 30
+    },
+    {
+     "id": "oil",
+     "qty": 3
+    },
+    {
+     "id": "black_pepper",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Roast makhana in a dry pan on low heat for 6 minutes till crisp.",
+    "Toss with a few drops of oil, pepper and salt."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "yes",
+   "allergens": []
+  },
+  {
+   "id": "chana_guava",
+   "name": "Roasted chana + guava",
+   "emoji": "🥜",
+   "slot": "snack",
+   "cuisine": "any",
+   "minutes": 2,
+   "kcal": 190,
+   "protein": 9,
+   "carbs": 30,
+   "fat": 3,
+   "ingredients": [
+    {
+     "id": "roasted_chana",
+     "qty": 30
+    },
+    {
+     "id": "guava",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Slice the guava and eat with a handful of roasted chana."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "yes",
+   "allergens": []
+  },
+  {
+   "id": "chaas_peanuts",
+   "name": "Masala chaas + peanuts",
+   "emoji": "🥛",
+   "slot": "snack",
+   "cuisine": "any",
+   "minutes": 5,
+   "kcal": 170,
+   "protein": 8,
+   "carbs": 10,
+   "fat": 10,
+   "ingredients": [
+    {
+     "id": "curd",
+     "qty": 100
+    },
+    {
+     "id": "peanuts",
+     "qty": 15
+    },
+    {
+     "id": "cumin",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Whisk curd with water, roasted jeera powder and salt.",
+    "Have with a small handful of peanuts."
+   ],
+   "tags": [],
+   "kind": "veg",
+   "jain": "yes",
+   "allergens": [
+    "dairy",
+    "peanut"
+   ]
+  },
+  {
+   "id": "paneer_tikka",
+   "name": "Paneer tikka bites",
+   "emoji": "🍢",
+   "slot": "snack",
+   "cuisine": "north",
+   "minutes": 15,
+   "kcal": 190,
+   "protein": 13,
+   "carbs": 5,
+   "fat": 13,
+   "ingredients": [
+    {
+     "id": "paneer",
+     "qty": 60
+    },
+    {
+     "id": "capsicum",
+     "qty": 40
+    },
+    {
+     "id": "onion",
+     "qty": 20
+    },
+    {
+     "id": "curd",
+     "qty": 20
+    },
+    {
+     "id": "chilli_powder",
+     "qty": 1
+    },
+    {
+     "id": "oil",
+     "qty": 3
+    },
+    {
+     "id": "salt",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Toss paneer, capsicum and onion with curd, chilli powder and salt.",
+    "Grill or pan-roast 6 minutes, turning once."
+   ],
+   "tags": [
+    "high_sat_fat"
+   ],
+   "kind": "veg",
+   "jain": "adapt",
+   "allergens": [
+    "dairy"
+   ]
+  },
+  {
+   "id": "fruit_bowl",
+   "name": "Papaya-banana bowl + seeds",
+   "emoji": "🍓",
+   "slot": "snack",
+   "cuisine": "any",
+   "minutes": 5,
+   "kcal": 160,
+   "protein": 4,
+   "carbs": 30,
+   "fat": 4,
+   "ingredients": [
+    {
+     "id": "papaya",
+     "qty": 150
+    },
+    {
+     "id": "banana",
+     "qty": 0.5
+    },
+    {
+     "id": "pumpkin_seeds",
+     "qty": 8
+    }
+   ],
+   "steps": [
+    "Cube papaya, slice banana, sprinkle pumpkin seeds."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "yes",
+   "allergens": []
+  },
+  {
+   "id": "boiled_eggs",
+   "name": "Boiled eggs with pepper",
+   "emoji": "🥚",
+   "slot": "snack",
+   "cuisine": "any",
+   "minutes": 10,
+   "kcal": 150,
+   "protein": 13,
+   "carbs": 1,
+   "fat": 10,
+   "ingredients": [
+    {
+     "id": "eggs",
+     "qty": 2
+    },
+    {
+     "id": "black_pepper",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Boil eggs 9 minutes, cool, peel and season."
+   ],
+   "tags": [],
+   "kind": "egg",
+   "jain": "no",
+   "allergens": [
+    "egg"
+   ]
+  },
+  {
+   "id": "corn_chaat",
+   "name": "Sweet corn chaat",
+   "emoji": "🌽",
+   "slot": "snack",
+   "cuisine": "any",
+   "minutes": 10,
+   "kcal": 170,
+   "protein": 5,
+   "carbs": 32,
+   "fat": 3,
+   "ingredients": [
+    {
+     "id": "corn",
+     "qty": 80
+    },
+    {
+     "id": "onion",
+     "qty": 15
+    },
+    {
+     "id": "tomato",
+     "qty": 20
+    },
+    {
+     "id": "lemon",
+     "qty": 0.5
+    },
+    {
+     "id": "salt",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Boil corn 5 minutes.",
+    "Toss with onion, tomato, lemon and salt."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "adapt",
+   "allergens": []
+  },
+  {
+   "id": "apple_pb",
+   "name": "Apple + peanut butter",
+   "emoji": "🍎",
+   "slot": "snack",
+   "cuisine": "any",
+   "minutes": 2,
+   "kcal": 200,
+   "protein": 6,
+   "carbs": 25,
+   "fat": 9,
+   "ingredients": [
+    {
+     "id": "apple",
+     "qty": 1
+    },
+    {
+     "id": "peanut_butter",
+     "qty": 15
+    }
+   ],
+   "steps": [
+    "Slice the apple and dip in peanut butter."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "yes",
+   "allergens": [
+    "peanut"
+   ]
+  },
+  {
+   "id": "green_tea_almonds",
+   "name": "Green tea + almonds",
+   "emoji": "🍵",
+   "slot": "snack",
+   "cuisine": "any",
+   "minutes": 3,
+   "kcal": 110,
+   "protein": 4,
+   "carbs": 4,
+   "fat": 9,
+   "ingredients": [
+    {
+     "id": "green_tea",
+     "qty": 1
+    },
+    {
+     "id": "almonds",
+     "qty": 15
+    }
+   ],
+   "steps": [
+    "Brew green tea 2 minutes; have with almonds."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "yes",
+   "allergens": [
+    "nuts"
+   ]
+  },
+  {
+   "id": "mixed_veg_dal",
+   "name": "Mixed veg, moong dal + phulka",
+   "emoji": "🫓",
+   "slot": "dinner",
+   "cuisine": "north",
+   "minutes": 30,
+   "kcal": 430,
+   "protein": 18,
+   "carbs": 62,
+   "fat": 11,
+   "ingredients": [
+    {
+     "id": "atta",
+     "qty": 60
+    },
+    {
+     "id": "moong_dal",
+     "qty": 40
+    },
+    {
+     "id": "carrot",
+     "qty": 50
+    },
+    {
+     "id": "peas",
+     "qty": 40
+    },
+    {
+     "id": "cauliflower",
+     "qty": 60
+    },
+    {
+     "id": "oil",
+     "qty": 7
+    },
+    {
+     "id": "cumin",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    },
+    {
+     "id": "turmeric",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Pressure-cook moong dal with turmeric and salt.",
+    "Stir-fry carrot, peas and cauliflower with jeera till tender.",
+    "Serve with phulkas."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "no",
+   "allergens": [
+    "gluten"
+   ]
+  },
+  {
+   "id": "dalia_khichdi",
+   "name": "Vegetable dalia khichdi + curd",
+   "emoji": "🥣",
+   "slot": "dinner",
+   "cuisine": "any",
+   "minutes": 30,
+   "kcal": 400,
+   "protein": 15,
+   "carbs": 64,
+   "fat": 9,
+   "ingredients": [
+    {
+     "id": "dalia",
+     "qty": 55
+    },
+    {
+     "id": "moong_dal",
+     "qty": 25
+    },
+    {
+     "id": "carrot",
+     "qty": 40
+    },
+    {
+     "id": "peas",
+     "qty": 30
+    },
+    {
+     "id": "curd",
+     "qty": 100
+    },
+    {
+     "id": "ghee",
+     "qty": 4
+    },
+    {
+     "id": "cumin",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Roast dalia in ghee with jeera for 2 minutes.",
+    "Add moong dal, vegetables, salt and 3 cups water; pressure-cook 3 whistles.",
+    "Serve with curd."
+   ],
+   "tags": [],
+   "kind": "veg",
+   "jain": "no",
+   "allergens": [
+    "dairy",
+    "gluten"
+   ]
+  },
+  {
+   "id": "grilled_paneer",
+   "name": "Grilled paneer + sautéed veg",
+   "emoji": "🍢",
+   "slot": "dinner",
+   "cuisine": "any",
+   "minutes": 20,
+   "kcal": 430,
+   "protein": 26,
+   "carbs": 18,
+   "fat": 27,
+   "ingredients": [
+    {
+     "id": "paneer",
+     "qty": 100
+    },
+    {
+     "id": "capsicum",
+     "qty": 60
+    },
+    {
+     "id": "mushroom",
+     "qty": 60
+    },
+    {
+     "id": "onion",
+     "qty": 30
+    },
+    {
+     "id": "oil",
+     "qty": 5
+    },
+    {
+     "id": "black_pepper",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Season paneer slices with salt and pepper and pan-grill 2 minutes a side.",
+    "Sauté capsicum, mushroom and onion on high heat.",
+    "Plate together."
+   ],
+   "tags": [
+    "high_sat_fat"
+   ],
+   "kind": "veg",
+   "jain": "adapt",
+   "allergens": [
+    "dairy"
+   ]
+  },
+  {
+   "id": "grilled_chicken",
+   "name": "Grilled chicken + sautéed veg",
+   "emoji": "🍗",
+   "slot": "dinner",
+   "cuisine": "any",
+   "minutes": 25,
+   "kcal": 400,
+   "protein": 40,
+   "carbs": 16,
+   "fat": 18,
+   "ingredients": [
+    {
+     "id": "chicken_breast",
+     "qty": 140
+    },
+    {
+     "id": "capsicum",
+     "qty": 60
+    },
+    {
+     "id": "cabbage",
+     "qty": 60
+    },
+    {
+     "id": "curd",
+     "qty": 30
+    },
+    {
+     "id": "lemon",
+     "qty": 0.5
+    },
+    {
+     "id": "oil",
+     "qty": 6
+    },
+    {
+     "id": "chilli_powder",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Marinate chicken in curd, lemon, chilli powder and salt for 20 minutes.",
+    "Pan-grill 5–6 minutes a side till cooked through.",
+    "Sauté capsicum and cabbage and serve alongside."
+   ],
+   "tags": [],
+   "kind": "nonveg",
+   "jain": "no",
+   "allergens": [
+    "dairy"
+   ]
+  },
+  {
+   "id": "ragi_dal_palak",
+   "name": "Ragi roti + dal palak",
+   "emoji": "🫓",
+   "slot": "dinner",
+   "cuisine": "any",
+   "minutes": 30,
+   "kcal": 420,
+   "protein": 18,
+   "carbs": 62,
+   "fat": 10,
+   "ingredients": [
+    {
+     "id": "ragi",
+     "qty": 60
+    },
+    {
+     "id": "toor_dal",
+     "qty": 40
+    },
+    {
+     "id": "spinach",
+     "qty": 120
+    },
+    {
+     "id": "tomato",
+     "qty": 40
+    },
+    {
+     "id": "garlic",
+     "qty": 4
+    },
+    {
+     "id": "oil",
+     "qty": 6
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    },
+    {
+     "id": "turmeric",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Pressure-cook toor dal with turmeric.",
+    "Cook garlic and tomato, add chopped spinach till wilted, then the dal.",
+    "Knead ragi atta with hot water, pat into rotis and cook on a tawa."
+   ],
+   "tags": [
+    "high_iron"
+   ],
+   "kind": "vegan",
+   "jain": "adapt",
+   "allergens": []
+  },
+  {
+   "id": "moong_soup_tofu",
+   "name": "Moong soup + tofu stir-fry",
+   "emoji": "🍲",
+   "slot": "dinner",
+   "cuisine": "any",
+   "minutes": 25,
+   "kcal": 380,
+   "protein": 26,
+   "carbs": 34,
+   "fat": 15,
+   "ingredients": [
+    {
+     "id": "moong_dal",
+     "qty": 35
+    },
+    {
+     "id": "tofu",
+     "qty": 120
+    },
+    {
+     "id": "cabbage",
+     "qty": 60
+    },
+    {
+     "id": "capsicum",
+     "qty": 40
+    },
+    {
+     "id": "ginger",
+     "qty": 3
+    },
+    {
+     "id": "garlic",
+     "qty": 3
+    },
+    {
+     "id": "oil",
+     "qty": 6
+    },
+    {
+     "id": "black_pepper",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Cook moong dal with extra water, ginger and salt into a thin soup; add pepper.",
+    "Stir-fry tofu, cabbage, capsicum and garlic on high heat for 5 minutes."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "adapt",
+   "allergens": [
+    "soy"
+   ]
+  },
+  {
+   "id": "bajra_lauki_dal",
+   "name": "Bajra roti + lauki chana dal",
+   "emoji": "🫓",
+   "slot": "dinner",
+   "cuisine": "west",
+   "minutes": 35,
+   "kcal": 430,
+   "protein": 17,
+   "carbs": 64,
+   "fat": 11,
+   "ingredients": [
+    {
+     "id": "bajra",
+     "qty": 60
+    },
+    {
+     "id": "chana_dal",
+     "qty": 40
+    },
+    {
+     "id": "lauki",
+     "qty": 150
+    },
+    {
+     "id": "tomato",
+     "qty": 30
+    },
+    {
+     "id": "oil",
+     "qty": 6
+    },
+    {
+     "id": "cumin",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    },
+    {
+     "id": "turmeric",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Pressure-cook chana dal and lauki with turmeric and salt for 3 whistles.",
+    "Temper jeera and tomato in oil and add to the dal.",
+    "Knead bajra atta with warm water, pat into rotis and cook on a tawa."
+   ],
+   "tags": [
+    "high_iron"
+   ],
+   "kind": "vegan",
+   "jain": "yes",
+   "allergens": []
+  },
+  {
+   "id": "fish_tikka",
+   "name": "Fish tikka + salad",
+   "emoji": "🐟",
+   "slot": "dinner",
+   "cuisine": "any",
+   "minutes": 25,
+   "kcal": 380,
+   "protein": 34,
+   "carbs": 12,
+   "fat": 20,
+   "ingredients": [
+    {
+     "id": "fish",
+     "qty": 140
+    },
+    {
+     "id": "curd",
+     "qty": 40
+    },
+    {
+     "id": "lemon",
+     "qty": 0.5
+    },
+    {
+     "id": "cucumber",
+     "qty": 60
+    },
+    {
+     "id": "tomato",
+     "qty": 40
+    },
+    {
+     "id": "oil",
+     "qty": 6
+    },
+    {
+     "id": "chilli_powder",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Marinate fish in curd, lemon, chilli powder and salt for 15 minutes.",
+    "Pan-grill 3 minutes a side.",
+    "Serve with cucumber and tomato salad."
+   ],
+   "tags": [],
+   "kind": "nonveg",
+   "jain": "no",
+   "allergens": [
+    "dairy",
+    "fish"
+   ]
+  },
+  {
+   "id": "masoor_jeera_rice",
+   "name": "Masoor dal + jeera rice",
+   "emoji": "🍛",
+   "slot": "dinner",
+   "cuisine": "north",
+   "minutes": 30,
+   "kcal": 430,
+   "protein": 18,
+   "carbs": 68,
+   "fat": 9,
+   "ingredients": [
+    {
+     "id": "masoor_dal",
+     "qty": 45
+    },
+    {
+     "id": "rice",
+     "qty": 45
+    },
+    {
+     "id": "onion",
+     "qty": 30
+    },
+    {
+     "id": "tomato",
+     "qty": 40
+    },
+    {
+     "id": "garlic",
+     "qty": 3
+    },
+    {
+     "id": "oil",
+     "qty": 6
+    },
+    {
+     "id": "cumin",
+     "qty": 2
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    },
+    {
+     "id": "turmeric",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Cook masoor dal with turmeric and salt till soft.",
+    "Temper jeera, garlic, onion and tomato and stir into the dal.",
+    "Cook rice with jeera."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "adapt",
+   "allergens": []
+  },
+  {
+   "id": "aloo_gobi_dal",
+   "name": "Aloo gobi, dal + phulka",
+   "emoji": "🫓",
+   "slot": "dinner",
+   "cuisine": "north",
+   "minutes": 35,
+   "kcal": 460,
+   "protein": 16,
+   "carbs": 70,
+   "fat": 13,
+   "ingredients": [
+    {
+     "id": "potato",
+     "qty": 80
+    },
+    {
+     "id": "cauliflower",
+     "qty": 120
+    },
+    {
+     "id": "masoor_dal",
+     "qty": 35
+    },
+    {
+     "id": "atta",
+     "qty": 50
+    },
+    {
+     "id": "oil",
+     "qty": 8
+    },
+    {
+     "id": "cumin",
+     "qty": 1
+    },
+    {
+     "id": "coriander_powder",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    },
+    {
+     "id": "turmeric",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Cook masoor dal with turmeric and salt.",
+    "Cook potato and cauliflower with jeera, dhania powder and turmeric, covered, for 12 minutes.",
+    "Serve with phulkas."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "no",
+   "allergens": [
+    "gluten"
+   ]
+  },
+  {
+   "id": "egg_wrap",
+   "name": "Egg veggie wrap",
+   "emoji": "🌯",
+   "slot": "dinner",
+   "cuisine": "any",
+   "minutes": 20,
+   "kcal": 430,
+   "protein": 22,
+   "carbs": 42,
+   "fat": 18,
+   "ingredients": [
+    {
+     "id": "eggs",
+     "qty": 2
+    },
+    {
+     "id": "atta",
+     "qty": 60
+    },
+    {
+     "id": "onion",
+     "qty": 30
+    },
+    {
+     "id": "capsicum",
+     "qty": 30
+    },
+    {
+     "id": "cabbage",
+     "qty": 40
+    },
+    {
+     "id": "oil",
+     "qty": 6
+    },
+    {
+     "id": "salt",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Make a roti from the atta.",
+    "Pour beaten eggs into a pan, lay the roti on top, flip and cook.",
+    "Fill with shredded cabbage, onion and capsicum and roll up."
+   ],
+   "tags": [],
+   "kind": "egg",
+   "jain": "no",
+   "allergens": [
+    "egg",
+    "gluten"
+   ]
+  },
+  {
+   "id": "mushroom_matar",
+   "name": "Mushroom matar + jowar roti",
+   "emoji": "🍄",
+   "slot": "dinner",
+   "cuisine": "any",
+   "minutes": 30,
+   "kcal": 410,
+   "protein": 17,
+   "carbs": 58,
+   "fat": 12,
+   "ingredients": [
+    {
+     "id": "mushroom",
+     "qty": 120
+    },
+    {
+     "id": "peas",
+     "qty": 60
+    },
+    {
+     "id": "jowar",
+     "qty": 60
+    },
+    {
+     "id": "onion",
+     "qty": 30
+    },
+    {
+     "id": "tomato",
+     "qty": 50
+    },
+    {
+     "id": "oil",
+     "qty": 7
+    },
+    {
+     "id": "garam_masala",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Cook onion and tomato with garam masala till jammy.",
+    "Add mushroom and peas; cook 8 minutes.",
+    "Serve with jowar rotis."
+   ],
+   "tags": [],
+   "kind": "vegan",
+   "jain": "adapt",
+   "allergens": []
+  },
+  {
+   "id": "chicken_soup_veg",
+   "name": "Chicken soup + stir-fried veg",
+   "emoji": "🍲",
+   "slot": "dinner",
+   "cuisine": "any",
+   "minutes": 30,
+   "kcal": 360,
+   "protein": 34,
+   "carbs": 20,
+   "fat": 14,
+   "ingredients": [
+    {
+     "id": "chicken_breast",
+     "qty": 120
+    },
+    {
+     "id": "carrot",
+     "qty": 50
+    },
+    {
+     "id": "cabbage",
+     "qty": 60
+    },
+    {
+     "id": "ginger",
+     "qty": 3
+    },
+    {
+     "id": "garlic",
+     "qty": 3
+    },
+    {
+     "id": "oil",
+     "qty": 4
+    },
+    {
+     "id": "black_pepper",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    }
+   ],
+   "steps": [
+    "Simmer chicken with ginger, garlic, salt and 3 cups water for 20 minutes; shred.",
+    "Add pepper and chopped carrot to the soup.",
+    "Stir-fry cabbage separately."
+   ],
+   "tags": [],
+   "kind": "nonveg",
+   "jain": "no",
+   "allergens": []
+  },
+  {
+   "id": "prawn_masala",
+   "name": "Prawn masala + rice",
+   "emoji": "🍤",
+   "slot": "dinner",
+   "cuisine": "east",
+   "minutes": 30,
+   "kcal": 480,
+   "protein": 30,
+   "carbs": 60,
+   "fat": 12,
+   "ingredients": [
+    {
+     "id": "prawns",
+     "qty": 120
+    },
+    {
+     "id": "rice",
+     "qty": 55
+    },
+    {
+     "id": "onion",
+     "qty": 40
+    },
+    {
+     "id": "tomato",
+     "qty": 50
+    },
+    {
+     "id": "coconut",
+     "qty": 15
+    },
+    {
+     "id": "oil",
+     "qty": 7
+    },
+    {
+     "id": "chilli_powder",
+     "qty": 1
+    },
+    {
+     "id": "salt",
+     "qty": 2
+    },
+    {
+     "id": "turmeric",
+     "qty": 1
+    }
+   ],
+   "steps": [
+    "Cook onion and tomato with chilli powder and turmeric.",
+    "Add coconut and a splash of water, then prawns; cook 5 minutes.",
+    "Serve with rice."
+   ],
+   "tags": [
+    "high_purine"
+   ],
+   "kind": "nonveg",
+   "jain": "no",
+   "allergens": [
+    "fish",
+    "shellfish"
+   ]
+  }
+ ]
+}
